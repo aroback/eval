@@ -1,4 +1,4 @@
 # Ignore the files in the cache folder #
 # but do not ignore the entitre cache folder #
 
-./cache/*
+./cache/*.php
