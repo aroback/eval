@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2011 at 09:37 PM
--- Server version: 5.1.44
--- PHP Version: 5.3.1
+-- Generation Time: Apr 25, 2011 at 02:05 AM
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_acl_options` (
   `founder_only` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`auth_option_id`),
   UNIQUE KEY `auth_option` (`auth_option`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=118 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=119 ;
 
 --
 -- Dumping data for table `phpbb_acl_options`
@@ -221,7 +221,8 @@ INSERT INTO `phpbb_acl_options` (`auth_option_id`, `auth_option`, `is_global`, `
 (114, 'u_sendpm', 1, 0, 0),
 (115, 'u_sig', 1, 0, 0),
 (116, 'u_viewonline', 1, 0, 0),
-(117, 'u_viewprofile', 1, 0, 0);
+(117, 'u_viewprofile', 1, 0, 0),
+(118, 'a_add_user', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -914,9 +915,9 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('allow_avatar_upload', '0', 0),
 ('allow_avatar_remote_upload', '0', 0),
 ('allow_bbcode', '1', 0),
-('allow_birthdays', '1', 0),
+('allow_birthdays', '0', 0),
 ('allow_bookmarks', '1', 0),
-('allow_emailreuse', '0', 0),
+('allow_emailreuse', '1', 0),
 ('allow_forum_notify', '1', 0),
 ('allow_mass_pm', '1', 0),
 ('allow_name_chars', 'USERNAME_CHARS_ANY', 0),
@@ -1056,7 +1057,7 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('load_anon_lastread', '0', 0),
 ('load_birthdays', '0', 0),
 ('load_cpf_memberlist', '0', 0),
-('load_cpf_viewprofile', '1', 0),
+('load_cpf_viewprofile', '0', 0),
 ('load_cpf_viewtopic', '0', 0),
 ('load_db_lastread', '1', 0),
 ('load_db_track', '1', 0),
@@ -1111,7 +1112,7 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('print_pm', '1', 0),
 ('queue_interval', '60', 0),
 ('ranks_path', 'images/ranks', 0),
-('require_activation', '0', 0),
+('require_activation', '2', 0),
 ('referer_validation', '1', 0),
 ('script_path', '/\\', 0),
 ('search_block_size', '250', 0),
@@ -1145,7 +1146,7 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('version', '3.0.8', 0),
 ('warnings_expire_days', '90', 0),
 ('warnings_gc', '14400', 0),
-('cache_last_gc', '1303498095', 1),
+('cache_last_gc', '1303688440', 1),
 ('cron_lock', '0', 1),
 ('database_last_gc', '1303450700', 1),
 ('last_queue_run', '1301966498', 1),
@@ -1156,17 +1157,18 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('num_posts', '13', 1),
 ('num_topics', '8', 1),
 ('num_users', '4', 1),
-('rand_seed', 'ed29837d9d1702e42e9a488e87ecc7cb', 1),
-('rand_seed_last_update', '1303498089', 1),
+('rand_seed', '9ce02199d84fb0a384f2cb2fe744a8b3', 1),
+('rand_seed_last_update', '1303689244', 1),
 ('record_online_date', '1301874693', 1),
 ('record_online_users', '2', 1),
 ('search_indexing_state', '', 1),
-('search_last_gc', '1303450704', 1),
-('session_last_gc', '1303450711', 1),
+('search_last_gc', '1303688459', 1),
+('session_last_gc', '1303688460', 1),
 ('upload_dir_size', '0', 1),
-('warnings_last_gc', '1303450690', 1),
+('warnings_last_gc', '1303688448', 1),
 ('board_startdate', '1301716297', 0),
-('default_lang', 'en', 0);
+('default_lang', 'en', 0),
+('add_user_version', '1.0.1', 0);
 
 -- --------------------------------------------------------
 
@@ -1597,7 +1599,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_log` (
   KEY `topic_id` (`topic_id`),
   KEY `reportee_id` (`reportee_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=64 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=74 ;
 
 --
 -- Dumping data for table `phpbb_log`
@@ -1666,7 +1668,17 @@ INSERT INTO `phpbb_log` (`log_id`, `log_type`, `user_id`, `forum_id`, `topic_id`
 (60, 0, 2, 0, 0, 0, '127.0.0.1', 1302986752, 0x4c4f475f41434c5f4144445f464f52554d5f4c4f43414c5f465f, 0x613a323a7b693a303b733a32383a22496e7374727563746f72732c205441732c20616e642041646d696e73223b693a313b733a34323a223c7370616e20636c6173733d22736570223e476c6f62616c206d6f64657261746f72733c2f7370616e3e223b7d),
 (61, 0, 2, 0, 0, 0, '127.0.0.1', 1302986760, 0x4c4f475f41434c5f4144445f464f52554d5f4c4f43414c5f465f, 0x613a323a7b693a303b733a32383a22496e7374727563746f72732c205441732c20616e642041646d696e73223b693a313b733a33313a223c7370616e20636c6173733d22736570223e4775657374733c2f7370616e3e223b7d),
 (62, 0, 2, 0, 0, 0, '127.0.0.1', 1302986769, 0x4c4f475f41434c5f4144445f464f52554d5f4c4f43414c5f465f, 0x613a323a7b693a303b733a32383a22496e7374727563746f72732c205441732c20616e642041646d696e73223b693a313b733a34373a223c7370616e20636c6173733d22736570223e4e65776c7920726567697374657265642075736572733c2f7370616e3e223b7d),
-(63, 0, 2, 0, 0, 0, '127.0.0.1', 1302986786, 0x4c4f475f41434c5f4144445f464f52554d5f4c4f43414c5f465f, 0x613a323a7b693a303b733a32383a22496e7374727563746f72732c205441732c20616e642041646d696e73223b693a313b733a34313a223c7370616e20636c6173733d22736570223e526567697374657265642075736572733c2f7370616e3e223b7d);
+(63, 0, 2, 0, 0, 0, '127.0.0.1', 1302986786, 0x4c4f475f41434c5f4144445f464f52554d5f4c4f43414c5f465f, 0x613a323a7b693a303b733a32383a22496e7374727563746f72732c205441732c20616e642041646d696e73223b693a313b733a34313a223c7370616e20636c6173733d22736570223e526567697374657265642075736572733c2f7370616e3e223b7d),
+(64, 0, 2, 0, 0, 0, '127.0.0.1', 1303688548, 0x4c4f475f41444d494e5f415554485f53554343455353, ''),
+(65, 0, 2, 0, 0, 0, '127.0.0.1', 1303689121, 0x4c4f475f4d4f44554c455f44495341424c45, 0x613a313a7b693a303b733a353a222e4d4f4473223b7d),
+(66, 0, 2, 0, 0, 0, '127.0.0.1', 1303689125, 0x4c4f475f4d4f44554c455f4d4f56455f5550, 0x613a323a7b693a303b733a363a225374796c6573223b693a313b733a31313a225065726d697373696f6e73223b7d),
+(67, 0, 2, 0, 0, 0, '127.0.0.1', 1303689145, 0x4c4f475f4d4f44554c455f44495341424c45, 0x613a313a7b693a303b733a31363a22557365727320616e642047726f757073223b7d),
+(68, 0, 2, 0, 0, 0, '127.0.0.1', 1303689151, 0x4c4f475f4d4f44554c455f454e41424c45, 0x613a313a7b693a303b733a31363a22557365727320616e642047726f757073223b7d),
+(69, 0, 2, 0, 0, 0, '127.0.0.1', 1303689153, 0x4c4f475f4d4f44554c455f454e41424c45, 0x613a313a7b693a303b733a353a222e4d4f4473223b7d),
+(70, 0, 2, 0, 0, 0, '127.0.0.1', 1303689246, 0x4c4f475f4d4f44554c455f414444, 0x613a313a7b693a303b733a383a224164642055736572223b7d),
+(71, 0, 2, 0, 0, 0, '127.0.0.1', 1303689270, 0x4c4f475f4d4f44554c455f454e41424c45, 0x613a313a7b693a303b733a383a224164642055736572223b7d),
+(72, 0, 2, 0, 0, 0, '127.0.0.1', 1303689478, 0x4c4f475f434f4e4649475f4645415455524553, ''),
+(73, 0, 2, 0, 0, 0, '127.0.0.1', 1303689585, 0x4c4f475f434f4e4649475f524547495354524154494f4e, '');
 
 -- --------------------------------------------------------
 
@@ -1712,7 +1724,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_modules` (
   KEY `left_right_id` (`left_id`,`right_id`),
   KEY `module_enabled` (`module_enabled`),
   KEY `class_left_id` (`module_class`,`left_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=199 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=200 ;
 
 --
 -- Dumping data for table `phpbb_modules`
@@ -1730,34 +1742,34 @@ INSERT INTO `phpbb_modules` (`module_id`, `module_enabled`, `module_display`, `m
 (9, 1, 1, '', 'acp', 0, 85, 110, 'ACP_CAT_POSTING', '', ''),
 (10, 1, 1, '', 'acp', 9, 86, 99, 'ACP_MESSAGES', '', ''),
 (11, 1, 1, '', 'acp', 9, 100, 109, 'ACP_ATTACHMENTS', '', ''),
-(12, 1, 1, '', 'acp', 0, 111, 166, 'ACP_CAT_USERGROUP', '', ''),
-(13, 1, 1, '', 'acp', 12, 112, 145, 'ACP_CAT_USERS', '', ''),
-(14, 1, 1, '', 'acp', 12, 146, 153, 'ACP_GROUPS', '', ''),
-(15, 1, 1, '', 'acp', 12, 154, 165, 'ACP_USER_SECURITY', '', ''),
-(16, 1, 1, '', 'acp', 0, 167, 216, 'ACP_CAT_PERMISSIONS', '', ''),
-(17, 1, 1, '', 'acp', 16, 170, 179, 'ACP_GLOBAL_PERMISSIONS', '', ''),
-(18, 1, 1, '', 'acp', 16, 180, 191, 'ACP_FORUM_BASED_PERMISSIONS', '', ''),
-(19, 1, 1, '', 'acp', 16, 192, 201, 'ACP_PERMISSION_ROLES', '', ''),
-(20, 1, 1, '', 'acp', 16, 202, 215, 'ACP_PERMISSION_MASKS', '', ''),
-(21, 1, 1, '', 'acp', 0, 217, 230, 'ACP_CAT_STYLES', '', ''),
-(22, 1, 1, '', 'acp', 21, 218, 221, 'ACP_STYLE_MANAGEMENT', '', ''),
-(23, 1, 1, '', 'acp', 21, 222, 229, 'ACP_STYLE_COMPONENTS', '', ''),
-(24, 1, 1, '', 'acp', 0, 231, 250, 'ACP_CAT_MAINTENANCE', '', ''),
-(25, 1, 1, '', 'acp', 24, 232, 241, 'ACP_FORUM_LOGS', '', ''),
-(26, 1, 1, '', 'acp', 24, 242, 249, 'ACP_CAT_DATABASE', '', ''),
-(27, 1, 1, '', 'acp', 0, 251, 276, 'ACP_CAT_SYSTEM', '', ''),
-(28, 1, 1, '', 'acp', 27, 252, 255, 'ACP_AUTOMATION', '', ''),
-(29, 1, 1, '', 'acp', 27, 256, 267, 'ACP_GENERAL_TASKS', '', ''),
-(30, 1, 1, '', 'acp', 27, 268, 275, 'ACP_MODULE_MANAGEMENT', '', ''),
-(31, 1, 1, '', 'acp', 0, 277, 278, 'ACP_CAT_DOT_MODS', '', ''),
+(12, 1, 1, '', 'acp', 0, 111, 168, 'ACP_CAT_USERGROUP', '', ''),
+(13, 1, 1, '', 'acp', 12, 112, 147, 'ACP_CAT_USERS', '', ''),
+(14, 1, 1, '', 'acp', 12, 148, 155, 'ACP_GROUPS', '', ''),
+(15, 1, 1, '', 'acp', 12, 156, 167, 'ACP_USER_SECURITY', '', ''),
+(16, 1, 1, '', 'acp', 0, 183, 232, 'ACP_CAT_PERMISSIONS', '', ''),
+(17, 1, 1, '', 'acp', 16, 186, 195, 'ACP_GLOBAL_PERMISSIONS', '', ''),
+(18, 1, 1, '', 'acp', 16, 196, 207, 'ACP_FORUM_BASED_PERMISSIONS', '', ''),
+(19, 1, 1, '', 'acp', 16, 208, 217, 'ACP_PERMISSION_ROLES', '', ''),
+(20, 1, 1, '', 'acp', 16, 218, 231, 'ACP_PERMISSION_MASKS', '', ''),
+(21, 1, 1, '', 'acp', 0, 169, 182, 'ACP_CAT_STYLES', '', ''),
+(22, 1, 1, '', 'acp', 21, 170, 173, 'ACP_STYLE_MANAGEMENT', '', ''),
+(23, 1, 1, '', 'acp', 21, 174, 181, 'ACP_STYLE_COMPONENTS', '', ''),
+(24, 1, 1, '', 'acp', 0, 233, 252, 'ACP_CAT_MAINTENANCE', '', ''),
+(25, 1, 1, '', 'acp', 24, 234, 243, 'ACP_FORUM_LOGS', '', ''),
+(26, 1, 1, '', 'acp', 24, 244, 251, 'ACP_CAT_DATABASE', '', ''),
+(27, 1, 1, '', 'acp', 0, 253, 278, 'ACP_CAT_SYSTEM', '', ''),
+(28, 1, 1, '', 'acp', 27, 254, 257, 'ACP_AUTOMATION', '', ''),
+(29, 1, 1, '', 'acp', 27, 258, 269, 'ACP_GENERAL_TASKS', '', ''),
+(30, 1, 1, '', 'acp', 27, 270, 277, 'ACP_MODULE_MANAGEMENT', '', ''),
+(31, 1, 1, '', 'acp', 0, 279, 280, 'ACP_CAT_DOT_MODS', '', ''),
 (32, 1, 1, 'attachments', 'acp', 3, 19, 20, 'ACP_ATTACHMENT_SETTINGS', 'attach', 'acl_a_attach'),
 (33, 1, 1, 'attachments', 'acp', 11, 101, 102, 'ACP_ATTACHMENT_SETTINGS', 'attach', 'acl_a_attach'),
 (34, 1, 1, 'attachments', 'acp', 11, 103, 104, 'ACP_MANAGE_EXTENSIONS', 'extensions', 'acl_a_attach'),
 (35, 1, 1, 'attachments', 'acp', 11, 105, 106, 'ACP_EXTENSION_GROUPS', 'ext_groups', 'acl_a_attach'),
 (36, 1, 1, 'attachments', 'acp', 11, 107, 108, 'ACP_ORPHAN_ATTACHMENTS', 'orphan', 'acl_a_attach'),
-(37, 1, 1, 'ban', 'acp', 15, 155, 156, 'ACP_BAN_EMAILS', 'email', 'acl_a_ban'),
-(38, 1, 1, 'ban', 'acp', 15, 157, 158, 'ACP_BAN_IPS', 'ip', 'acl_a_ban'),
-(39, 1, 1, 'ban', 'acp', 15, 159, 160, 'ACP_BAN_USERNAMES', 'user', 'acl_a_ban'),
+(37, 1, 1, 'ban', 'acp', 15, 157, 158, 'ACP_BAN_EMAILS', 'email', 'acl_a_ban'),
+(38, 1, 1, 'ban', 'acp', 15, 159, 160, 'ACP_BAN_IPS', 'ip', 'acl_a_ban'),
+(39, 1, 1, 'ban', 'acp', 15, 161, 162, 'ACP_BAN_USERNAMES', 'user', 'acl_a_ban'),
 (40, 1, 1, 'bbcodes', 'acp', 10, 87, 88, 'ACP_BBCODES', 'bbcodes', 'acl_a_bbcode'),
 (41, 1, 1, 'board', 'acp', 3, 21, 22, 'ACP_BOARD_SETTINGS', 'settings', 'acl_a_board'),
 (42, 1, 1, 'board', 'acp', 3, 23, 24, 'ACP_BOARD_FEATURES', 'features', 'acl_a_board'),
@@ -1775,66 +1787,66 @@ INSERT INTO `phpbb_modules` (`module_id`, `module_enabled`, `module_display`, `m
 (54, 1, 1, 'board', 'acp', 5, 53, 54, 'ACP_SERVER_SETTINGS', 'server', 'acl_a_server'),
 (55, 1, 1, 'board', 'acp', 5, 55, 56, 'ACP_SECURITY_SETTINGS', 'security', 'acl_a_server'),
 (56, 1, 1, 'board', 'acp', 5, 57, 58, 'ACP_LOAD_SETTINGS', 'load', 'acl_a_server'),
-(57, 1, 1, 'bots', 'acp', 29, 257, 258, 'ACP_BOTS', 'bots', 'acl_a_bots'),
+(57, 1, 1, 'bots', 'acp', 29, 259, 260, 'ACP_BOTS', 'bots', 'acl_a_bots'),
 (58, 1, 1, 'captcha', 'acp', 3, 37, 38, 'ACP_VC_SETTINGS', 'visual', 'acl_a_board'),
 (59, 1, 0, 'captcha', 'acp', 3, 39, 40, 'ACP_VC_CAPTCHA_DISPLAY', 'img', 'acl_a_board'),
-(60, 1, 1, 'database', 'acp', 26, 243, 244, 'ACP_BACKUP', 'backup', 'acl_a_backup'),
-(61, 1, 1, 'database', 'acp', 26, 245, 246, 'ACP_RESTORE', 'restore', 'acl_a_backup'),
-(62, 1, 1, 'disallow', 'acp', 15, 161, 162, 'ACP_DISALLOW_USERNAMES', 'usernames', 'acl_a_names'),
-(63, 1, 1, 'email', 'acp', 29, 259, 260, 'ACP_MASS_EMAIL', 'email', 'acl_a_email && cfg_email_enable'),
+(60, 1, 1, 'database', 'acp', 26, 245, 246, 'ACP_BACKUP', 'backup', 'acl_a_backup'),
+(61, 1, 1, 'database', 'acp', 26, 247, 248, 'ACP_RESTORE', 'restore', 'acl_a_backup'),
+(62, 1, 1, 'disallow', 'acp', 15, 163, 164, 'ACP_DISALLOW_USERNAMES', 'usernames', 'acl_a_names'),
+(63, 1, 1, 'email', 'acp', 29, 261, 262, 'ACP_MASS_EMAIL', 'email', 'acl_a_email && cfg_email_enable'),
 (64, 1, 1, 'forums', 'acp', 7, 67, 68, 'ACP_MANAGE_FORUMS', 'manage', 'acl_a_forum'),
-(65, 1, 1, 'groups', 'acp', 14, 147, 148, 'ACP_GROUPS_MANAGE', 'manage', 'acl_a_group'),
+(65, 1, 1, 'groups', 'acp', 14, 149, 150, 'ACP_GROUPS_MANAGE', 'manage', 'acl_a_group'),
 (66, 1, 1, 'icons', 'acp', 10, 93, 94, 'ACP_ICONS', 'icons', 'acl_a_icons'),
 (67, 1, 1, 'icons', 'acp', 10, 95, 96, 'ACP_SMILIES', 'smilies', 'acl_a_icons'),
 (68, 1, 1, 'inactive', 'acp', 13, 115, 116, 'ACP_INACTIVE_USERS', 'list', 'acl_a_user'),
 (69, 1, 1, 'jabber', 'acp', 4, 47, 48, 'ACP_JABBER_SETTINGS', 'settings', 'acl_a_jabber'),
-(70, 1, 1, 'language', 'acp', 29, 261, 262, 'ACP_LANGUAGE_PACKS', 'lang_packs', 'acl_a_language'),
-(71, 1, 1, 'logs', 'acp', 25, 233, 234, 'ACP_ADMIN_LOGS', 'admin', 'acl_a_viewlogs'),
-(72, 1, 1, 'logs', 'acp', 25, 235, 236, 'ACP_MOD_LOGS', 'mod', 'acl_a_viewlogs'),
-(73, 1, 1, 'logs', 'acp', 25, 237, 238, 'ACP_USERS_LOGS', 'users', 'acl_a_viewlogs'),
-(74, 1, 1, 'logs', 'acp', 25, 239, 240, 'ACP_CRITICAL_LOGS', 'critical', 'acl_a_viewlogs'),
+(70, 1, 1, 'language', 'acp', 29, 263, 264, 'ACP_LANGUAGE_PACKS', 'lang_packs', 'acl_a_language'),
+(71, 1, 1, 'logs', 'acp', 25, 235, 236, 'ACP_ADMIN_LOGS', 'admin', 'acl_a_viewlogs'),
+(72, 1, 1, 'logs', 'acp', 25, 237, 238, 'ACP_MOD_LOGS', 'mod', 'acl_a_viewlogs'),
+(73, 1, 1, 'logs', 'acp', 25, 239, 240, 'ACP_USERS_LOGS', 'users', 'acl_a_viewlogs'),
+(74, 1, 1, 'logs', 'acp', 25, 241, 242, 'ACP_CRITICAL_LOGS', 'critical', 'acl_a_viewlogs'),
 (75, 1, 1, 'main', 'acp', 1, 2, 3, 'ACP_INDEX', 'main', ''),
-(76, 1, 1, 'modules', 'acp', 30, 269, 270, 'ACP', 'acp', 'acl_a_modules'),
-(77, 1, 1, 'modules', 'acp', 30, 271, 272, 'UCP', 'ucp', 'acl_a_modules'),
-(78, 1, 1, 'modules', 'acp', 30, 273, 274, 'MCP', 'mcp', 'acl_a_modules'),
-(79, 1, 1, 'permission_roles', 'acp', 19, 193, 194, 'ACP_ADMIN_ROLES', 'admin_roles', 'acl_a_roles && acl_a_aauth'),
-(80, 1, 1, 'permission_roles', 'acp', 19, 195, 196, 'ACP_USER_ROLES', 'user_roles', 'acl_a_roles && acl_a_uauth'),
-(81, 1, 1, 'permission_roles', 'acp', 19, 197, 198, 'ACP_MOD_ROLES', 'mod_roles', 'acl_a_roles && acl_a_mauth'),
-(82, 1, 1, 'permission_roles', 'acp', 19, 199, 200, 'ACP_FORUM_ROLES', 'forum_roles', 'acl_a_roles && acl_a_fauth'),
-(83, 1, 1, 'permissions', 'acp', 16, 168, 169, 'ACP_PERMISSIONS', 'intro', 'acl_a_authusers || acl_a_authgroups || acl_a_viewauth'),
-(84, 1, 0, 'permissions', 'acp', 20, 203, 204, 'ACP_PERMISSION_TRACE', 'trace', 'acl_a_viewauth'),
-(85, 1, 1, 'permissions', 'acp', 18, 181, 182, 'ACP_FORUM_PERMISSIONS', 'setting_forum_local', 'acl_a_fauth && (acl_a_authusers || acl_a_authgroups)'),
-(86, 1, 1, 'permissions', 'acp', 18, 183, 184, 'ACP_FORUM_PERMISSIONS_COPY', 'setting_forum_copy', 'acl_a_fauth && acl_a_authusers && acl_a_authgroups && acl_a_mauth'),
-(87, 1, 1, 'permissions', 'acp', 18, 185, 186, 'ACP_FORUM_MODERATORS', 'setting_mod_local', 'acl_a_mauth && (acl_a_authusers || acl_a_authgroups)'),
-(88, 1, 1, 'permissions', 'acp', 17, 171, 172, 'ACP_USERS_PERMISSIONS', 'setting_user_global', 'acl_a_authusers && (acl_a_aauth || acl_a_mauth || acl_a_uauth)'),
+(76, 1, 1, 'modules', 'acp', 30, 271, 272, 'ACP', 'acp', 'acl_a_modules'),
+(77, 1, 1, 'modules', 'acp', 30, 273, 274, 'UCP', 'ucp', 'acl_a_modules'),
+(78, 1, 1, 'modules', 'acp', 30, 275, 276, 'MCP', 'mcp', 'acl_a_modules'),
+(79, 1, 1, 'permission_roles', 'acp', 19, 209, 210, 'ACP_ADMIN_ROLES', 'admin_roles', 'acl_a_roles && acl_a_aauth'),
+(80, 1, 1, 'permission_roles', 'acp', 19, 211, 212, 'ACP_USER_ROLES', 'user_roles', 'acl_a_roles && acl_a_uauth'),
+(81, 1, 1, 'permission_roles', 'acp', 19, 213, 214, 'ACP_MOD_ROLES', 'mod_roles', 'acl_a_roles && acl_a_mauth'),
+(82, 1, 1, 'permission_roles', 'acp', 19, 215, 216, 'ACP_FORUM_ROLES', 'forum_roles', 'acl_a_roles && acl_a_fauth'),
+(83, 1, 1, 'permissions', 'acp', 16, 184, 185, 'ACP_PERMISSIONS', 'intro', 'acl_a_authusers || acl_a_authgroups || acl_a_viewauth'),
+(84, 1, 0, 'permissions', 'acp', 20, 219, 220, 'ACP_PERMISSION_TRACE', 'trace', 'acl_a_viewauth'),
+(85, 1, 1, 'permissions', 'acp', 18, 197, 198, 'ACP_FORUM_PERMISSIONS', 'setting_forum_local', 'acl_a_fauth && (acl_a_authusers || acl_a_authgroups)'),
+(86, 1, 1, 'permissions', 'acp', 18, 199, 200, 'ACP_FORUM_PERMISSIONS_COPY', 'setting_forum_copy', 'acl_a_fauth && acl_a_authusers && acl_a_authgroups && acl_a_mauth'),
+(87, 1, 1, 'permissions', 'acp', 18, 201, 202, 'ACP_FORUM_MODERATORS', 'setting_mod_local', 'acl_a_mauth && (acl_a_authusers || acl_a_authgroups)'),
+(88, 1, 1, 'permissions', 'acp', 17, 187, 188, 'ACP_USERS_PERMISSIONS', 'setting_user_global', 'acl_a_authusers && (acl_a_aauth || acl_a_mauth || acl_a_uauth)'),
 (89, 1, 1, 'permissions', 'acp', 13, 117, 118, 'ACP_USERS_PERMISSIONS', 'setting_user_global', 'acl_a_authusers && (acl_a_aauth || acl_a_mauth || acl_a_uauth)'),
-(90, 1, 1, 'permissions', 'acp', 18, 187, 188, 'ACP_USERS_FORUM_PERMISSIONS', 'setting_user_local', 'acl_a_authusers && (acl_a_mauth || acl_a_fauth)'),
+(90, 1, 1, 'permissions', 'acp', 18, 203, 204, 'ACP_USERS_FORUM_PERMISSIONS', 'setting_user_local', 'acl_a_authusers && (acl_a_mauth || acl_a_fauth)'),
 (91, 1, 1, 'permissions', 'acp', 13, 119, 120, 'ACP_USERS_FORUM_PERMISSIONS', 'setting_user_local', 'acl_a_authusers && (acl_a_mauth || acl_a_fauth)'),
-(92, 1, 1, 'permissions', 'acp', 17, 173, 174, 'ACP_GROUPS_PERMISSIONS', 'setting_group_global', 'acl_a_authgroups && (acl_a_aauth || acl_a_mauth || acl_a_uauth)'),
-(93, 1, 1, 'permissions', 'acp', 14, 149, 150, 'ACP_GROUPS_PERMISSIONS', 'setting_group_global', 'acl_a_authgroups && (acl_a_aauth || acl_a_mauth || acl_a_uauth)'),
-(94, 1, 1, 'permissions', 'acp', 18, 189, 190, 'ACP_GROUPS_FORUM_PERMISSIONS', 'setting_group_local', 'acl_a_authgroups && (acl_a_mauth || acl_a_fauth)'),
-(95, 1, 1, 'permissions', 'acp', 14, 151, 152, 'ACP_GROUPS_FORUM_PERMISSIONS', 'setting_group_local', 'acl_a_authgroups && (acl_a_mauth || acl_a_fauth)'),
-(96, 1, 1, 'permissions', 'acp', 17, 175, 176, 'ACP_ADMINISTRATORS', 'setting_admin_global', 'acl_a_aauth && (acl_a_authusers || acl_a_authgroups)'),
-(97, 1, 1, 'permissions', 'acp', 17, 177, 178, 'ACP_GLOBAL_MODERATORS', 'setting_mod_global', 'acl_a_mauth && (acl_a_authusers || acl_a_authgroups)'),
-(98, 1, 1, 'permissions', 'acp', 20, 205, 206, 'ACP_VIEW_ADMIN_PERMISSIONS', 'view_admin_global', 'acl_a_viewauth'),
-(99, 1, 1, 'permissions', 'acp', 20, 207, 208, 'ACP_VIEW_USER_PERMISSIONS', 'view_user_global', 'acl_a_viewauth'),
-(100, 1, 1, 'permissions', 'acp', 20, 209, 210, 'ACP_VIEW_GLOBAL_MOD_PERMISSIONS', 'view_mod_global', 'acl_a_viewauth'),
-(101, 1, 1, 'permissions', 'acp', 20, 211, 212, 'ACP_VIEW_FORUM_MOD_PERMISSIONS', 'view_mod_local', 'acl_a_viewauth'),
-(102, 1, 1, 'permissions', 'acp', 20, 213, 214, 'ACP_VIEW_FORUM_PERMISSIONS', 'view_forum_local', 'acl_a_viewauth'),
-(103, 1, 1, 'php_info', 'acp', 29, 263, 264, 'ACP_PHP_INFO', 'info', 'acl_a_phpinfo'),
+(92, 1, 1, 'permissions', 'acp', 17, 189, 190, 'ACP_GROUPS_PERMISSIONS', 'setting_group_global', 'acl_a_authgroups && (acl_a_aauth || acl_a_mauth || acl_a_uauth)'),
+(93, 1, 1, 'permissions', 'acp', 14, 151, 152, 'ACP_GROUPS_PERMISSIONS', 'setting_group_global', 'acl_a_authgroups && (acl_a_aauth || acl_a_mauth || acl_a_uauth)'),
+(94, 1, 1, 'permissions', 'acp', 18, 205, 206, 'ACP_GROUPS_FORUM_PERMISSIONS', 'setting_group_local', 'acl_a_authgroups && (acl_a_mauth || acl_a_fauth)'),
+(95, 1, 1, 'permissions', 'acp', 14, 153, 154, 'ACP_GROUPS_FORUM_PERMISSIONS', 'setting_group_local', 'acl_a_authgroups && (acl_a_mauth || acl_a_fauth)'),
+(96, 1, 1, 'permissions', 'acp', 17, 191, 192, 'ACP_ADMINISTRATORS', 'setting_admin_global', 'acl_a_aauth && (acl_a_authusers || acl_a_authgroups)'),
+(97, 1, 1, 'permissions', 'acp', 17, 193, 194, 'ACP_GLOBAL_MODERATORS', 'setting_mod_global', 'acl_a_mauth && (acl_a_authusers || acl_a_authgroups)'),
+(98, 1, 1, 'permissions', 'acp', 20, 221, 222, 'ACP_VIEW_ADMIN_PERMISSIONS', 'view_admin_global', 'acl_a_viewauth'),
+(99, 1, 1, 'permissions', 'acp', 20, 223, 224, 'ACP_VIEW_USER_PERMISSIONS', 'view_user_global', 'acl_a_viewauth'),
+(100, 1, 1, 'permissions', 'acp', 20, 225, 226, 'ACP_VIEW_GLOBAL_MOD_PERMISSIONS', 'view_mod_global', 'acl_a_viewauth'),
+(101, 1, 1, 'permissions', 'acp', 20, 227, 228, 'ACP_VIEW_FORUM_MOD_PERMISSIONS', 'view_mod_local', 'acl_a_viewauth'),
+(102, 1, 1, 'permissions', 'acp', 20, 229, 230, 'ACP_VIEW_FORUM_PERMISSIONS', 'view_forum_local', 'acl_a_viewauth'),
+(103, 1, 1, 'php_info', 'acp', 29, 265, 266, 'ACP_PHP_INFO', 'info', 'acl_a_phpinfo'),
 (104, 1, 1, 'profile', 'acp', 13, 121, 122, 'ACP_CUSTOM_PROFILE_FIELDS', 'profile', 'acl_a_profile'),
 (105, 1, 1, 'prune', 'acp', 7, 69, 70, 'ACP_PRUNE_FORUMS', 'forums', 'acl_a_prune'),
-(106, 1, 1, 'prune', 'acp', 15, 163, 164, 'ACP_PRUNE_USERS', 'users', 'acl_a_userdel'),
+(106, 1, 1, 'prune', 'acp', 15, 165, 166, 'ACP_PRUNE_USERS', 'users', 'acl_a_userdel'),
 (107, 1, 1, 'ranks', 'acp', 13, 123, 124, 'ACP_MANAGE_RANKS', 'ranks', 'acl_a_ranks'),
-(108, 1, 1, 'reasons', 'acp', 29, 265, 266, 'ACP_MANAGE_REASONS', 'main', 'acl_a_reasons'),
+(108, 1, 1, 'reasons', 'acp', 29, 267, 268, 'ACP_MANAGE_REASONS', 'main', 'acl_a_reasons'),
 (109, 1, 1, 'search', 'acp', 5, 59, 60, 'ACP_SEARCH_SETTINGS', 'settings', 'acl_a_search'),
-(110, 1, 1, 'search', 'acp', 26, 247, 248, 'ACP_SEARCH_INDEX', 'index', 'acl_a_search'),
+(110, 1, 1, 'search', 'acp', 26, 249, 250, 'ACP_SEARCH_INDEX', 'index', 'acl_a_search'),
 (111, 1, 1, 'send_statistics', 'acp', 5, 61, 62, 'ACP_SEND_STATISTICS', 'send_statistics', 'acl_a_server'),
-(112, 1, 1, 'styles', 'acp', 22, 219, 220, 'ACP_STYLES', 'style', 'acl_a_styles'),
-(113, 1, 1, 'styles', 'acp', 23, 223, 224, 'ACP_TEMPLATES', 'template', 'acl_a_styles'),
-(114, 1, 1, 'styles', 'acp', 23, 225, 226, 'ACP_THEMES', 'theme', 'acl_a_styles'),
-(115, 1, 1, 'styles', 'acp', 23, 227, 228, 'ACP_IMAGESETS', 'imageset', 'acl_a_styles'),
-(116, 1, 1, 'update', 'acp', 28, 253, 254, 'ACP_VERSION_CHECK', 'version_check', 'acl_a_board'),
+(112, 1, 1, 'styles', 'acp', 22, 171, 172, 'ACP_STYLES', 'style', 'acl_a_styles'),
+(113, 1, 1, 'styles', 'acp', 23, 175, 176, 'ACP_TEMPLATES', 'template', 'acl_a_styles'),
+(114, 1, 1, 'styles', 'acp', 23, 177, 178, 'ACP_THEMES', 'theme', 'acl_a_styles'),
+(115, 1, 1, 'styles', 'acp', 23, 179, 180, 'ACP_IMAGESETS', 'imageset', 'acl_a_styles'),
+(116, 1, 1, 'update', 'acp', 28, 255, 256, 'ACP_VERSION_CHECK', 'version_check', 'acl_a_board'),
 (117, 1, 1, 'users', 'acp', 13, 113, 114, 'ACP_MANAGE_USERS', 'overview', 'acl_a_user'),
 (118, 1, 0, 'users', 'acp', 13, 125, 126, 'ACP_USER_FEEDBACK', 'feedback', 'acl_a_user'),
 (119, 1, 0, 'users', 'acp', 13, 127, 128, 'ACP_USER_WARNINGS', 'warnings', 'acl_a_user'),
@@ -1916,7 +1928,8 @@ INSERT INTO `phpbb_modules` (`module_id`, `module_enabled`, `module_display`, `m
 (195, 1, 1, 'profile', 'ucp', 173, 18, 19, 'UCP_PROFILE_AVATAR', 'avatar', 'cfg_allow_avatar && (cfg_allow_avatar_local || cfg_allow_avatar_remote || cfg_allow_avatar_upload || cfg_allow_avatar_remote_upload)'),
 (196, 1, 1, 'profile', 'ucp', 173, 20, 21, 'UCP_PROFILE_REG_DETAILS', 'reg_details', ''),
 (197, 1, 1, 'zebra', 'ucp', 177, 50, 51, 'UCP_ZEBRA_FRIENDS', 'friends', ''),
-(198, 1, 1, 'zebra', 'ucp', 177, 52, 53, 'UCP_ZEBRA_FOES', 'foes', '');
+(198, 1, 1, 'zebra', 'ucp', 177, 52, 53, 'UCP_ZEBRA_FOES', 'foes', ''),
+(199, 1, 1, 'add_user', 'acp', 13, 145, 146, 'ACP_ADD_USER', 'add_user', 'acl_a_add_user');
 
 -- --------------------------------------------------------
 
@@ -2826,8 +2839,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_sessions` (
 --
 
 INSERT INTO `phpbb_sessions` (`session_id`, `session_user_id`, `session_forum_id`, `session_last_visit`, `session_start`, `session_time`, `session_ip`, `session_browser`, `session_forwarded_for`, `session_page`, `session_viewonline`, `session_autologin`, `session_admin`) VALUES
-('3b81f0c0f95b7af160c4c403cec76783', 1, 2, 1303498089, 1303498089, 1303498106, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0) Gecko/20100101 Firefox/4.0', '', 'viewforum.php?f=2', 1, 0, 0),
-('5ebf99cc1857a32b7798d00a9d524235', 2, 0, 1302988084, 1303450696, 1303451204, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0) Gecko/20100101 Firefox/4.0', '', 'index.php', 1, 0, 0);
+('08fbca395f47081bcb52c8de5b567048', 2, 0, 1303451204, 1303688548, 1303689599, '127.0.0.1', 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16', '', 'adm/index.php?i=users&mode=overview', 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -3563,8 +3575,8 @@ CREATE TABLE IF NOT EXISTS `phpbb_users` (
 --
 
 INSERT INTO `phpbb_users` (`user_id`, `user_type`, `group_id`, `user_permissions`, `user_perm_from`, `user_ip`, `user_regdate`, `username`, `username_clean`, `user_password`, `user_passchg`, `user_pass_convert`, `user_email`, `user_email_hash`, `user_birthday`, `user_lastvisit`, `user_lastmark`, `user_lastpost_time`, `user_lastpage`, `user_last_confirm_key`, `user_last_search`, `user_warnings`, `user_last_warning`, `user_login_attempts`, `user_inactive_reason`, `user_inactive_time`, `user_posts`, `user_lang`, `user_timezone`, `user_dst`, `user_dateformat`, `user_style`, `user_rank`, `user_colour`, `user_new_privmsg`, `user_unread_privmsg`, `user_last_privmsg`, `user_message_rules`, `user_full_folder`, `user_emailtime`, `user_topic_show_days`, `user_topic_sortby_type`, `user_topic_sortby_dir`, `user_post_show_days`, `user_post_sortby_type`, `user_post_sortby_dir`, `user_notify`, `user_notify_pm`, `user_notify_type`, `user_allow_pm`, `user_allow_viewonline`, `user_allow_viewemail`, `user_allow_massemail`, `user_options`, `user_avatar`, `user_avatar_type`, `user_avatar_width`, `user_avatar_height`, `user_sig`, `user_sig_bbcode_uid`, `user_sig_bbcode_bitfield`, `user_from`, `user_icq`, `user_aim`, `user_yim`, `user_msnm`, `user_jabber`, `user_website`, `user_occ`, `user_interests`, `user_actkey`, `user_newpasswd`, `user_form_salt`, `user_new`, `user_reminded`, `user_reminded_time`) VALUES
-(1, 2, 1, 0x30303030303030303030336b687261336e6b0a0a6931636a796f3030303030300a0a0a6931636a796f3030303030300a6931636a796f3030303030300a303030303030303030303030, 0, '', 1301716297, 'Anonymous', 'anonymous', '', 0, 0, '', 0, '', 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'd M Y H:i', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '250a1e7fc7041cd6', 1, 0, 0),
-(2, 3, 5, 0x7a696b307a6a7a696b307a6a7a696b3078730a0a7a696b307a6a7a68623274630a0a0a7a696b307a6a7a68623274630a7a696b307a6a7a68623274630a7a696b307a69303030303030, 0, '127.0.0.1', 1301716297, 'admin', 'admin', '$H$9xGRS2y74SdF9pYJBQKU7meiV9a9DQ.', 0, 0, 'aroback@iit.edu', 222015273015, '', 1303003808, 0, 1303451194, 'index.php', '', 0, 0, 0, 0, 0, 0, 9, 'en', -6.00, 0, 'D M d, Y g:i a', 2, 1, 'AA0000', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '981317d4a8066d3a', 0, 0, 0),
+(1, 2, 1, '', 0, '', 1301716297, 'Anonymous', 'anonymous', '', 0, 0, '', 0, '', 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'd M Y H:i', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '9943911412ae9f2e', 1, 0, 0),
+(2, 3, 5, 0x7a696b307a6a7a696b307a6a7a696b30796f0a0a7a696b307a6a7a68623274630a0a0a7a696b307a6a7a68623274630a7a696b307a6a7a68623274630a7a696b307a69303030303030, 0, '127.0.0.1', 1301716297, 'admin', 'admin', '$H$9xGRS2y74SdF9pYJBQKU7meiV9a9DQ.', 0, 0, 'aroback@iit.edu', 222015273015, '', 1303451204, 0, 1303451194, 'index.php', '', 0, 0, 0, 0, 0, 0, 9, 'en', -6.00, 0, 'D M d, Y g:i a', 2, 1, 'AA0000', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0fa4f71c00ce6f9a', 0, 0, 0),
 (3, 2, 6, '', 0, '', 1301716308, 'AdsBot [Google]', 'adsbot [google]', '', 1301716308, 0, '', 0, '', 0, 1301716308, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '7273e3c9814dac7d', 0, 0, 0),
 (4, 2, 6, '', 0, '', 1301716308, 'Alexa [Bot]', 'alexa [bot]', '', 1301716308, 0, '', 0, '', 0, 1301716308, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '087279a24e2da5ba', 0, 0, 0),
 (5, 2, 6, '', 0, '', 1301716308, 'Alta Vista [Bot]', 'alta vista [bot]', '', 1301716308, 0, '', 0, '', 0, 1301716308, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '5338c76ac48dcafb', 0, 0, 0),
