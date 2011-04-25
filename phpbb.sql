@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2011 at 02:05 AM
+-- Generation Time: Apr 25, 2011 at 02:16 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -1152,13 +1152,13 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('last_queue_run', '1301966498', 1),
 ('newest_user_colour', '', 1),
 ('newest_user_id', '56', 1),
-('newest_username', 'C-student', 1),
+('newest_username', 'S11-9581', 1),
 ('num_files', '0', 1),
 ('num_posts', '13', 1),
 ('num_topics', '8', 1),
 ('num_users', '4', 1),
-('rand_seed', '9ce02199d84fb0a384f2cb2fe744a8b3', 1),
-('rand_seed_last_update', '1303689244', 1),
+('rand_seed', '5d558ce381dac6e15efaa196bd6a08ae', 1),
+('rand_seed_last_update', '1303690310', 1),
 ('record_online_date', '1301874693', 1),
 ('record_online_users', '2', 1),
 ('search_indexing_state', '', 1),
@@ -1599,7 +1599,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_log` (
   KEY `topic_id` (`topic_id`),
   KEY `reportee_id` (`reportee_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=74 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=86 ;
 
 --
 -- Dumping data for table `phpbb_log`
@@ -1678,7 +1678,19 @@ INSERT INTO `phpbb_log` (`log_id`, `log_type`, `user_id`, `forum_id`, `topic_id`
 (70, 0, 2, 0, 0, 0, '127.0.0.1', 1303689246, 0x4c4f475f4d4f44554c455f414444, 0x613a313a7b693a303b733a383a224164642055736572223b7d),
 (71, 0, 2, 0, 0, 0, '127.0.0.1', 1303689270, 0x4c4f475f4d4f44554c455f454e41424c45, 0x613a313a7b693a303b733a383a224164642055736572223b7d),
 (72, 0, 2, 0, 0, 0, '127.0.0.1', 1303689478, 0x4c4f475f434f4e4649475f4645415455524553, ''),
-(73, 0, 2, 0, 0, 0, '127.0.0.1', 1303689585, 0x4c4f475f434f4e4649475f524547495354524154494f4e, '');
+(73, 0, 2, 0, 0, 0, '127.0.0.1', 1303689585, 0x4c4f475f434f4e4649475f524547495354524154494f4e, ''),
+(74, 0, 2, 0, 0, 0, '127.0.0.1', 1303690168, 0x4c4f475f555345525f555345525f555044415445, 0x613a313a7b693a303b733a393a22412d73747564656e74223b7d),
+(75, 3, 2, 0, 0, 54, '127.0.0.1', 1303690225, 0x4c4f475f555345525f5550444154455f4e414d45, 0x613a323a7b693a303b733a393a22412d73747564656e74223b693a313b733a383a225331312d33343532223b7d),
+(76, 3, 2, 0, 0, 54, '127.0.0.1', 1303690225, 0x4c4f475f555345525f4e45575f50415353574f5244, 0x613a313a7b693a303b733a393a22412d73747564656e74223b7d),
+(77, 0, 2, 0, 0, 0, '127.0.0.1', 1303690225, 0x4c4f475f555345525f555345525f555044415445, 0x613a313a7b693a303b733a383a225331312d33343532223b7d),
+(78, 3, 2, 0, 0, 55, '127.0.0.1', 1303690273, 0x4c4f475f555345525f5550444154455f4e414d45, 0x613a323a7b693a303b733a393a22422d73747564656e74223b693a313b733a383a225331312d35333831223b7d),
+(79, 3, 2, 0, 0, 55, '127.0.0.1', 1303690273, 0x4c4f475f555345525f5550444154455f454d41494c, 0x613a333a7b693a303b733a393a22422d73747564656e74223b693a313b733a31363a2263616e6764657273406969742e656475223b693a323b733a32373a22636861726973652e616e67646572736f6e40676d61696c2e636f6d223b7d),
+(80, 3, 2, 0, 0, 55, '127.0.0.1', 1303690273, 0x4c4f475f555345525f4e45575f50415353574f5244, 0x613a313a7b693a303b733a393a22422d73747564656e74223b7d),
+(81, 0, 2, 0, 0, 0, '127.0.0.1', 1303690273, 0x4c4f475f555345525f555345525f555044415445, 0x613a313a7b693a303b733a383a225331312d35333831223b7d),
+(82, 3, 2, 0, 0, 56, '127.0.0.1', 1303690310, 0x4c4f475f555345525f5550444154455f4e414d45, 0x613a323a7b693a303b733a393a22432d73747564656e74223b693a313b733a383a225331312d39353831223b7d),
+(83, 3, 2, 0, 0, 56, '127.0.0.1', 1303690310, 0x4c4f475f555345525f5550444154455f454d41494c, 0x613a333a7b693a303b733a393a22432d73747564656e74223b693a313b733a32373a22636861726973652e616e67646572736f6e407961686f6f2e636f6d223b693a323b733a32373a22636861726973652e616e67646572736f6e40676d61696c2e636f6d223b7d),
+(84, 3, 2, 0, 0, 56, '127.0.0.1', 1303690310, 0x4c4f475f555345525f4e45575f50415353574f5244, 0x613a313a7b693a303b733a393a22432d73747564656e74223b7d),
+(85, 0, 2, 0, 0, 0, '127.0.0.1', 1303690310, 0x4c4f475f555345525f555345525f555044415445, 0x613a313a7b693a303b733a383a225331312d39353831223b7d);
 
 -- --------------------------------------------------------
 
@@ -2839,7 +2851,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_sessions` (
 --
 
 INSERT INTO `phpbb_sessions` (`session_id`, `session_user_id`, `session_forum_id`, `session_last_visit`, `session_start`, `session_time`, `session_ip`, `session_browser`, `session_forwarded_for`, `session_page`, `session_viewonline`, `session_autologin`, `session_admin`) VALUES
-('08fbca395f47081bcb52c8de5b567048', 2, 0, 1303451204, 1303688548, 1303689599, '127.0.0.1', 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16', '', 'adm/index.php?i=users&mode=overview', 1, 0, 1);
+('08fbca395f47081bcb52c8de5b567048', 2, 0, 1303451204, 1303688548, 1303690568, '127.0.0.1', 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16', '', 'adm/index.php?i=board&mode=features', 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -3314,9 +3326,9 @@ CREATE TABLE IF NOT EXISTS `phpbb_topics` (
 
 INSERT INTO `phpbb_topics` (`topic_id`, `forum_id`, `icon_id`, `topic_attachment`, `topic_approved`, `topic_reported`, `topic_title`, `topic_poster`, `topic_time`, `topic_time_limit`, `topic_views`, `topic_replies`, `topic_replies_real`, `topic_status`, `topic_type`, `topic_first_post_id`, `topic_first_poster_name`, `topic_first_poster_colour`, `topic_last_post_id`, `topic_last_poster_id`, `topic_last_poster_name`, `topic_last_poster_colour`, `topic_last_post_subject`, `topic_last_post_time`, `topic_last_view_time`, `topic_moved_id`, `topic_bumped`, `topic_bumper`, `poll_title`, `poll_start`, `poll_length`, `poll_max_options`, `poll_last_vote`, `poll_vote_change`) VALUES
 (1, 2, 0, 0, 1, 0, 'Welcome to phpBB3', 2, 1301716297, 0, 4, 1, 1, 0, 0, 1, 'admin', 'AA0000', 2, 2, 'admin', 'AA0000', 'Re: Welcome to phpBB3', 1301717128, 1301964887, 0, 0, 0, '', 0, 0, 1, 0, 0),
-(2, 2, 0, 0, 1, 0, 'Clarity', 2, 1301964174, 0, 10, 3, 3, 0, 0, 3, 'admin', 'AA0000', 9, 54, 'A-student', '', 'Re: Clarity', 1301966163, 1303003418, 0, 0, 0, 'The instructor explained the material clearly.', 1301964174, 0, 1, 1301966363, 0),
+(2, 2, 0, 0, 1, 0, 'Clarity', 2, 1301964174, 0, 10, 3, 3, 0, 0, 3, 'admin', 'AA0000', 9, 54, 'S11-3452', '', 'Re: Clarity', 1301966163, 1303003418, 0, 0, 0, 'The instructor explained the material clearly.', 1301964174, 0, 1, 1301966363, 0),
 (3, 2, 0, 0, 1, 0, 'Instructor Teaching Method', 2, 1301964946, 0, 3, 0, 0, 0, 0, 4, 'admin', 'AA0000', 4, 2, 'admin', 'AA0000', 'Instructor Teaching Method', 1301964946, 1303003403, 0, 0, 0, '', 0, 0, 1, 0, 0),
-(4, 2, 0, 0, 1, 0, 'Intellectually Challenging', 2, 1301965519, 0, 7, 1, 1, 0, 0, 5, 'admin', 'AA0000', 8, 55, 'B-student', '', 'Re: Intellectually Challenging', 1301965726, 1303451020, 0, 0, 0, 'The course was intellectually challenging.', 1301965519, 0, 1, 1301966435, 0),
+(4, 2, 0, 0, 1, 0, 'Intellectually Challenging', 2, 1301965519, 0, 7, 1, 1, 0, 0, 5, 'admin', 'AA0000', 8, 55, 'S11-5381', '', 'Re: Intellectually Challenging', 1301965726, 1303451020, 0, 0, 0, 'The course was intellectually challenging.', 1301965519, 0, 1, 1301966435, 0),
 (5, 7, 0, 0, 1, 0, 'Tips for using this system', 2, 1302987122, 0, 0, 0, 0, 0, 0, 10, 'admin', 'AA0000', 10, 2, 'admin', 'AA0000', 'Tips for using this system', 1302987122, 1302987122, 0, 0, 0, '', 0, 0, 1, 0, 0),
 (6, 7, 0, 0, 1, 0, 'Suggested close-ended (poll) questions', 2, 1302987983, 0, 0, 0, 0, 0, 0, 11, 'admin', 'AA0000', 11, 2, 'admin', 'AA0000', 'Suggested close-ended (poll) questions', 1302987983, 1302987983, 0, 0, 0, '', 0, 0, 1, 0, 0),
 (7, 2, 0, 0, 1, 0, 'Instructor''s Knowledge', 2, 1303003777, 0, 3, 0, 0, 0, 0, 12, 'admin', 'AA0000', 12, 2, 'admin', 'AA0000', 'Instructor''s Knowledge', 1303003777, 1303450981, 0, 0, 0, 'The instructor’s knowledge of the subject was relevant and up-to-date', 1303003777, 0, 1, 0, 0),
@@ -3628,9 +3640,9 @@ INSERT INTO `phpbb_users` (`user_id`, `user_type`, `group_id`, `user_permissions
 (51, 2, 6, '', 0, '', 1301716309, 'Yahoo Slurp [Bot]', 'yahoo slurp [bot]', '', 1301716309, 0, '', 0, '', 0, 1301716309, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'cb74d693b24146b8', 0, 0, 0),
 (52, 2, 6, '', 0, '', 1301716309, 'Yahoo [Bot]', 'yahoo [bot]', '', 1301716309, 0, '', 0, '', 0, 1301716309, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '292c3c239ebca09d', 0, 0, 0),
 (53, 2, 6, '', 0, '', 1301716309, 'YahooSeeker [Bot]', 'yahooseeker [bot]', '', 1301716309, 0, '', 0, '', 0, 1301716309, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'e829dbf9ff09157f', 0, 0, 0),
-(54, 0, 2, '', 0, '127.0.0.1', 1301962799, 'A-student', 'a-student', '$H$9R/5L8yemSCdeV9xQdenuYiIByKaKF.', 1301965942, 0, 'charise.angderson@gmail.com', 179912465227, '', 1301966243, 1301962799, 1301966163, '', '', 0, 0, 0, 0, 0, 0, 1, 'en', -6.00, 1, 'D M d, Y g:i a', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '3PN977', '$H$92mj6KzM8jT7zOMNWCmDD52Pqd0VOh0', '020e85f5772dd875', 1, 0, 0),
-(55, 0, 2, '', 0, '127.0.0.1', 1301965586, 'B-student', 'b-student', '$H$97bQ2VQ0HPBBfbgbh0lYNERlWbuADT1', 1301965586, 0, 'cangders@iit.edu', 96265950016, '', 1301965730, 1301965586, 1301965726, '', '', 0, 0, 0, 0, 0, 0, 3, 'en', -6.00, 1, 'D M d, Y g:i a', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0dffd5f31005c279', 1, 0, 0),
-(56, 0, 2, '', 0, '127.0.0.1', 1301966303, 'C-student', 'c-student', '$H$90I4RoeKB8BnT5W9rqeUrP9FFD..9o0', 1301966303, 0, 'charise.angderson@yahoo.com', 155924227027, '', 1301966423, 1301966303, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', -6.00, 1, 'D M d, Y g:i a', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '9a925ba60bf2d74f', 1, 0, 0);
+(54, 0, 2, '', 0, '127.0.0.1', 1301962799, 'S11-3452', 's11-3452', '$H$9XqQfhubyJNTrs.q5zimIfQqBHA0pb/', 1303690225, 0, 'charise.angderson@gmail.com', 179912465227, '', 1301966243, 1301962799, 1301966163, '', '', 0, 0, 0, 0, 0, 0, 1, 'en', -6.00, 1, 'D M d, Y g:i a', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '3PN977', '$H$92mj6KzM8jT7zOMNWCmDD52Pqd0VOh0', '020e85f5772dd875', 1, 0, 0),
+(55, 0, 2, '', 0, '127.0.0.1', 1301965586, 'S11-5381', 's11-5381', '$H$9IWpBjmijXNmENdOHEDuZP3EUhf/I01', 1303690273, 0, 'charise.angderson@gmail.com', 179912465227, '', 1301965730, 1301965586, 1301965726, '', '', 0, 0, 0, 0, 0, 0, 3, 'en', -6.00, 1, 'D M d, Y g:i a', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0dffd5f31005c279', 1, 0, 0),
+(56, 0, 2, '', 0, '127.0.0.1', 1301966303, 'S11-9581', 's11-9581', '$H$91i.t0pkkiYPSy/MbMMDpckd3Sz.P.1', 1303690310, 0, 'charise.angderson@gmail.com', 179912465227, '', 1301966423, 1301966303, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', -6.00, 1, 'D M d, Y g:i a', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '9a925ba60bf2d74f', 1, 0, 0);
 
 -- --------------------------------------------------------
 
