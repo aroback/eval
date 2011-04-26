@@ -1,4 +1,5 @@
-<?php if (!defined('IN_PHPBB')) exit; $this->_tpl_include('overall_header.html'); ?>
+<?php if (!defined('IN_PHPBB')) exit; $this->_tpl_include('overall_header.html'); ?>
+
 
 <table class="tablebg" width="100%" cellspacing="1">
 <tr>

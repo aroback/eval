@@ -1,8 +1,10 @@
-<?php if (!defined('IN_PHPBB')) exit; $this->_tpl_include('overall_header.html'); ?>
+<?php if (!defined('IN_PHPBB')) exit; $this->_tpl_include('overall_header.html'); ?>
+
 
 <a name="maincontent"></a>
 
-<?php if ($this->_rootref['S_EDIT_FORUM']) {  ?>
+<?php if ($this->_rootref['S_EDIT_FORUM']) {  ?>
+
 
 	<script type="text/javascript">
 	// <![CDATA[
@@ -11,7 +13,8 @@
 		*/
 		function display_options(value)
 		{
-			<?php if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_POST']) {  ?>
+			<?php if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_POST']) {  ?>
+
 				if (value == <?php echo (isset($this->_rootref['FORUM_POST'])) ? $this->_rootref['FORUM_POST'] : ''; ?>)
 				{
 					dE('type_actions', -1);
@@ -20,7 +23,8 @@
 				{
 					dE('type_actions', 1);
 				}
-			<?php } if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_CAT'] && $this->_rootref['S_HAS_SUBFORUMS']) {  ?>
+			<?php } if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_CAT'] && $this->_rootref['S_HAS_SUBFORUMS']) {  ?>
+
 				if (value == <?php echo (isset($this->_rootref['FORUM_LINK'])) ? $this->_rootref['FORUM_LINK'] : ''; ?>)
 				{
 					dE('cat_to_link_actions', 1);
@@ -29,7 +33,8 @@
 				{
 					dE('cat_to_link_actions', -1);
 				}
-			<?php } ?>
+			<?php } ?>
+
 
 			if (value == <?php echo (isset($this->_rootref['FORUM_POST'])) ? $this->_rootref['FORUM_POST'] : ''; ?>)
 			{
@@ -60,19 +65,26 @@
 		*/
 		onload = function()
 		{
-			<?php if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_POST']) {  if ($this->_rootref['S_FORUM_POST']) {  ?>
+			<?php if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_POST']) {  if ($this->_rootref['S_FORUM_POST']) {  ?>
+
 					dE('type_actions', -1);
-				<?php } } if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_CAT'] && $this->_rootref['S_HAS_SUBFORUMS']) {  if ($this->_rootref['S_FORUM_CAT']) {  ?>
+				<?php } } if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_CAT'] && $this->_rootref['S_HAS_SUBFORUMS']) {  if ($this->_rootref['S_FORUM_CAT']) {  ?>
+
 					dE('cat_to_link_actions', -1);
-				<?php } } if (! $this->_rootref['S_FORUM_POST']) {  ?>
+				<?php } } if (! $this->_rootref['S_FORUM_POST']) {  ?>
+
 				dE('forum_post_options', -1);
-			<?php } if (! $this->_rootref['S_FORUM_CAT']) {  ?>
+			<?php } if (! $this->_rootref['S_FORUM_CAT']) {  ?>
+
 				dE('forum_cat_options', -1);
-			<?php } if (! $this->_rootref['S_FORUM_LINK']) {  ?>
+			<?php } if (! $this->_rootref['S_FORUM_LINK']) {  ?>
+
 				dE('forum_link_options', -1);
-			<?php } if ($this->_rootref['S_FORUM_LINK']) {  ?>
+			<?php } if ($this->_rootref['S_FORUM_LINK']) {  ?>
+
 			dE('forum_rules_options', -1);
-			<?php } ?>
+			<?php } ?>
+
 		}
 
 	// ]]>
@@ -84,12 +96,14 @@
 
 	<p><?php echo ((isset($this->_rootref['L_FORUM_EDIT_EXPLAIN'])) ? $this->_rootref['L_FORUM_EDIT_EXPLAIN'] : ((isset($user->lang['FORUM_EDIT_EXPLAIN'])) ? $user->lang['FORUM_EDIT_EXPLAIN'] : '{ FORUM_EDIT_EXPLAIN }')); ?></p>
 
-	<?php if ($this->_rootref['S_ERROR']) {  ?>
+	<?php if ($this->_rootref['S_ERROR']) {  ?>
+
 		<div class="errorbox">
 			<h3><?php echo ((isset($this->_rootref['L_WARNING'])) ? $this->_rootref['L_WARNING'] : ((isset($user->lang['WARNING'])) ? $user->lang['WARNING'] : '{ WARNING }')); ?></h3>
 			<p><?php echo (isset($this->_rootref['ERROR_MSG'])) ? $this->_rootref['ERROR_MSG'] : ''; ?></p>
 		</div>
-	<?php } ?>
+	<?php } ?>
+
 
 	<form id="forumedit" method="post" action="<?php echo (isset($this->_rootref['U_EDIT_ACTION'])) ? $this->_rootref['U_EDIT_ACTION'] : ''; ?>">
 
@@ -99,26 +113,33 @@
 		<dt><label for="forum_type"><?php echo ((isset($this->_rootref['L_FORUM_TYPE'])) ? $this->_rootref['L_FORUM_TYPE'] : ((isset($user->lang['FORUM_TYPE'])) ? $user->lang['FORUM_TYPE'] : '{ FORUM_TYPE }')); ?>:</label></dt>
 		<dd><select id="forum_type" name="forum_type" onchange="display_options(this.options[this.selectedIndex].value);"><?php echo (isset($this->_rootref['S_FORUM_TYPE_OPTIONS'])) ? $this->_rootref['S_FORUM_TYPE_OPTIONS'] : ''; ?></select></dd>
 	</dl>
-	<?php if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_POST']) {  ?>
+	<?php if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_POST']) {  ?>
+
 	<div id="type_actions">
 		<dl>
 			<dt><label for="type_action"><?php echo ((isset($this->_rootref['L_DECIDE_MOVE_DELETE_CONTENT'])) ? $this->_rootref['L_DECIDE_MOVE_DELETE_CONTENT'] : ((isset($user->lang['DECIDE_MOVE_DELETE_CONTENT'])) ? $user->lang['DECIDE_MOVE_DELETE_CONTENT'] : '{ DECIDE_MOVE_DELETE_CONTENT }')); ?>:</label></dt>
 			<dd><label><input type="radio" class="radio" name="type_action" value="delete"<?php if (! $this->_rootref['S_MOVE_FORUM_OPTIONS']) {  ?> checked="checked" id="type_action"<?php } ?> /> <?php echo ((isset($this->_rootref['L_DELETE_ALL_POSTS'])) ? $this->_rootref['L_DELETE_ALL_POSTS'] : ((isset($user->lang['DELETE_ALL_POSTS'])) ? $user->lang['DELETE_ALL_POSTS'] : '{ DELETE_ALL_POSTS }')); ?></label></dd>
-			<?php if ($this->_rootref['S_MOVE_FORUM_OPTIONS']) {  ?><dd><label><input type="radio" class="radio" name="type_action" id="type_action" value="move" checked="checked" /> <?php echo ((isset($this->_rootref['L_MOVE_POSTS_TO'])) ? $this->_rootref['L_MOVE_POSTS_TO'] : ((isset($user->lang['MOVE_POSTS_TO'])) ? $user->lang['MOVE_POSTS_TO'] : '{ MOVE_POSTS_TO }')); ?></label> <select name="to_forum_id"><?php echo (isset($this->_rootref['S_MOVE_FORUM_OPTIONS'])) ? $this->_rootref['S_MOVE_FORUM_OPTIONS'] : ''; ?></select></dd><?php } ?>
+			<?php if ($this->_rootref['S_MOVE_FORUM_OPTIONS']) {  ?><dd><label><input type="radio" class="radio" name="type_action" id="type_action" value="move" checked="checked" /> <?php echo ((isset($this->_rootref['L_MOVE_POSTS_TO'])) ? $this->_rootref['L_MOVE_POSTS_TO'] : ((isset($user->lang['MOVE_POSTS_TO'])) ? $user->lang['MOVE_POSTS_TO'] : '{ MOVE_POSTS_TO }')); ?></label> <select name="to_forum_id"><?php echo (isset($this->_rootref['S_MOVE_FORUM_OPTIONS'])) ? $this->_rootref['S_MOVE_FORUM_OPTIONS'] : ''; ?></select></dd><?php } ?>
+
 		</dl>
 	</div>
-	<?php } if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_CAT'] && $this->_rootref['S_HAS_SUBFORUMS']) {  ?>
+	<?php } if (! $this->_rootref['S_ADD_ACTION'] && $this->_rootref['S_FORUM_ORIG_CAT'] && $this->_rootref['S_HAS_SUBFORUMS']) {  ?>
+
 	<div id="cat_to_link_actions">
 		<dl>
 			<dt><label for="action_subforums"><?php echo ((isset($this->_rootref['L_DECIDE_MOVE_DELETE_SUBFORUMS'])) ? $this->_rootref['L_DECIDE_MOVE_DELETE_SUBFORUMS'] : ((isset($user->lang['DECIDE_MOVE_DELETE_SUBFORUMS'])) ? $user->lang['DECIDE_MOVE_DELETE_SUBFORUMS'] : '{ DECIDE_MOVE_DELETE_SUBFORUMS }')); ?>:</label></dt>
-			<?php if ($this->_rootref['S_FORUMS_LIST']) {  ?>
+			<?php if ($this->_rootref['S_FORUMS_LIST']) {  ?>
+
 				<dd><label><input type="radio" class="radio" id="action_subforums" name="action_subforums" value="move" checked="checked" /> <?php echo ((isset($this->_rootref['L_MOVE_SUBFORUMS_TO'])) ? $this->_rootref['L_MOVE_SUBFORUMS_TO'] : ((isset($user->lang['MOVE_SUBFORUMS_TO'])) ? $user->lang['MOVE_SUBFORUMS_TO'] : '{ MOVE_SUBFORUMS_TO }')); ?></label> <select name="subforums_to_id"><?php echo (isset($this->_rootref['S_FORUMS_LIST'])) ? $this->_rootref['S_FORUMS_LIST'] : ''; ?></select></dd>
-			<?php } else { ?>
+			<?php } else { ?>
+
 				<dd><label><input type="radio" class="radio" id="action_subforums" name="action_subforums" value="delete" checked="checked" /> <?php echo ((isset($this->_rootref['L_DELETE_SUBFORUMS'])) ? $this->_rootref['L_DELETE_SUBFORUMS'] : ((isset($user->lang['DELETE_SUBFORUMS'])) ? $user->lang['DELETE_SUBFORUMS'] : '{ DELETE_SUBFORUMS }')); ?></label></dd>
-			<?php } ?>
+			<?php } ?>
+
 		</dl>
 	</div>
-	<?php } ?>
+	<?php } ?>
+
 	<dl>
 		<dt><label for="parent"><?php echo ((isset($this->_rootref['L_FORUM_PARENT'])) ? $this->_rootref['L_FORUM_PARENT'] : ((isset($user->lang['FORUM_PARENT'])) ? $user->lang['FORUM_PARENT'] : '{ FORUM_PARENT }')); ?>:</label></dt>
 		<dd><select id="parent" name="forum_parent_id"><option value="0"<?php if (! $this->_rootref['S_FORUM_PARENT_ID']) {  ?> selected="selected"<?php } ?>><?php echo ((isset($this->_rootref['L_NO_PARENT'])) ? $this->_rootref['L_NO_PARENT'] : ((isset($user->lang['NO_PARENT'])) ? $user->lang['NO_PARENT'] : '{ NO_PARENT }')); ?></option><?php echo (isset($this->_rootref['S_PARENT_OPTIONS'])) ? $this->_rootref['S_PARENT_OPTIONS'] : ''; ?></select></dd>
@@ -137,9 +158,11 @@
 	<dl>
 		<dt><label for="forum_image"><?php echo ((isset($this->_rootref['L_FORUM_IMAGE'])) ? $this->_rootref['L_FORUM_IMAGE'] : ((isset($user->lang['FORUM_IMAGE'])) ? $user->lang['FORUM_IMAGE'] : '{ FORUM_IMAGE }')); ?>:</label><br /><span><?php echo ((isset($this->_rootref['L_FORUM_IMAGE_EXPLAIN'])) ? $this->_rootref['L_FORUM_IMAGE_EXPLAIN'] : ((isset($user->lang['FORUM_IMAGE_EXPLAIN'])) ? $user->lang['FORUM_IMAGE_EXPLAIN'] : '{ FORUM_IMAGE_EXPLAIN }')); ?></span></dt>
 		<dd><input class="text medium" type="text" id="forum_image" name="forum_image" value="<?php echo (isset($this->_rootref['FORUM_IMAGE'])) ? $this->_rootref['FORUM_IMAGE'] : ''; ?>" maxlength="255" /></dd>
-		<?php if ($this->_rootref['FORUM_IMAGE_SRC']) {  ?>
+		<?php if ($this->_rootref['FORUM_IMAGE_SRC']) {  ?>
+
 			<dd><img src="<?php echo (isset($this->_rootref['FORUM_IMAGE_SRC'])) ? $this->_rootref['FORUM_IMAGE_SRC'] : ''; ?>" alt="<?php echo ((isset($this->_rootref['L_FORUM_IMAGE'])) ? $this->_rootref['L_FORUM_IMAGE'] : ((isset($user->lang['FORUM_IMAGE'])) ? $user->lang['FORUM_IMAGE'] : '{ FORUM_IMAGE }')); ?>" /></dd>
-		<?php } ?>
+		<?php } ?>
+
 	</dl>
 	<dl>
 		<dt><label for="forum_password"><?php echo ((isset($this->_rootref['L_FORUM_PASSWORD'])) ? $this->_rootref['L_FORUM_PASSWORD'] : ((isset($user->lang['FORUM_PASSWORD'])) ? $user->lang['FORUM_PASSWORD'] : '{ FORUM_PASSWORD }')); ?>:</label><br /><span><?php echo ((isset($this->_rootref['L_FORUM_PASSWORD_EXPLAIN'])) ? $this->_rootref['L_FORUM_PASSWORD_EXPLAIN'] : ((isset($user->lang['FORUM_PASSWORD_EXPLAIN'])) ? $user->lang['FORUM_PASSWORD_EXPLAIN'] : '{ FORUM_PASSWORD_EXPLAIN }')); ?></span></dt>
@@ -149,22 +172,26 @@
 		<dt><label for="forum_password_confirm"><?php echo ((isset($this->_rootref['L_FORUM_PASSWORD_CONFIRM'])) ? $this->_rootref['L_FORUM_PASSWORD_CONFIRM'] : ((isset($user->lang['FORUM_PASSWORD_CONFIRM'])) ? $user->lang['FORUM_PASSWORD_CONFIRM'] : '{ FORUM_PASSWORD_CONFIRM }')); ?>:</label><br /><span><?php echo ((isset($this->_rootref['L_FORUM_PASSWORD_CONFIRM_EXPLAIN'])) ? $this->_rootref['L_FORUM_PASSWORD_CONFIRM_EXPLAIN'] : ((isset($user->lang['FORUM_PASSWORD_CONFIRM_EXPLAIN'])) ? $user->lang['FORUM_PASSWORD_CONFIRM_EXPLAIN'] : '{ FORUM_PASSWORD_CONFIRM_EXPLAIN }')); ?></span></dt>
 		<dd><input type="password" id="forum_password_confirm" name="forum_password_confirm" value="<?php if ($this->_rootref['S_FORUM_PASSWORD_SET']) {  ?>&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;<?php } ?>" /></dd>
 	</dl>
-	<?php if ($this->_rootref['S_FORUM_PASSWORD_SET']) {  ?>
+	<?php if ($this->_rootref['S_FORUM_PASSWORD_SET']) {  ?>
+
 	<dl>
 		<dt><label for="forum_password_unset"><?php echo ((isset($this->_rootref['L_FORUM_PASSWORD_UNSET'])) ? $this->_rootref['L_FORUM_PASSWORD_UNSET'] : ((isset($user->lang['FORUM_PASSWORD_UNSET'])) ? $user->lang['FORUM_PASSWORD_UNSET'] : '{ FORUM_PASSWORD_UNSET }')); ?>:</label><br /><span><?php echo ((isset($this->_rootref['L_FORUM_PASSWORD_UNSET_EXPLAIN'])) ? $this->_rootref['L_FORUM_PASSWORD_UNSET_EXPLAIN'] : ((isset($user->lang['FORUM_PASSWORD_UNSET_EXPLAIN'])) ? $user->lang['FORUM_PASSWORD_UNSET_EXPLAIN'] : '{ FORUM_PASSWORD_UNSET_EXPLAIN }')); ?></span></dt>
 		<dd><input id="forum_password_unset" name="forum_password_unset" type="checkbox" /></dd>
 	</dl>
-	<?php } ?>
+	<?php } ?>
+
 	<dl>
 		<dt><label for="forum_style"><?php echo ((isset($this->_rootref['L_FORUM_STYLE'])) ? $this->_rootref['L_FORUM_STYLE'] : ((isset($user->lang['FORUM_STYLE'])) ? $user->lang['FORUM_STYLE'] : '{ FORUM_STYLE }')); ?>:</label></dt>
 		<dd><select id="forum_style" name="forum_style"><option value="0"><?php echo ((isset($this->_rootref['L_DEFAULT_STYLE'])) ? $this->_rootref['L_DEFAULT_STYLE'] : ((isset($user->lang['DEFAULT_STYLE'])) ? $user->lang['DEFAULT_STYLE'] : '{ DEFAULT_STYLE }')); ?></option><?php echo (isset($this->_rootref['S_STYLES_OPTIONS'])) ? $this->_rootref['S_STYLES_OPTIONS'] : ''; ?></select></dd>
 	</dl>
-	<?php if ($this->_rootref['S_CAN_COPY_PERMISSIONS']) {  ?>
+	<?php if ($this->_rootref['S_CAN_COPY_PERMISSIONS']) {  ?>
+
 		<dl>
 			<dt><label for="forum_perm_from"><?php echo ((isset($this->_rootref['L_COPY_PERMISSIONS'])) ? $this->_rootref['L_COPY_PERMISSIONS'] : ((isset($user->lang['COPY_PERMISSIONS'])) ? $user->lang['COPY_PERMISSIONS'] : '{ COPY_PERMISSIONS }')); ?>:</label><br /><span><?php echo ((isset($this->_rootref['L_COPY_PERMISSIONS_EXPLAIN'])) ? $this->_rootref['L_COPY_PERMISSIONS_EXPLAIN'] : ((isset($user->lang['COPY_PERMISSIONS_EXPLAIN'])) ? $user->lang['COPY_PERMISSIONS_EXPLAIN'] : '{ COPY_PERMISSIONS_EXPLAIN }')); ?></span></dt>
 			<dd><select id="forum_perm_from" name="forum_perm_from"><option value="0"><?php echo ((isset($this->_rootref['L_NO_PERMISSIONS'])) ? $this->_rootref['L_NO_PERMISSIONS'] : ((isset($user->lang['NO_PERMISSIONS'])) ? $user->lang['NO_PERMISSIONS'] : '{ NO_PERMISSIONS }')); ?></option><?php echo (isset($this->_rootref['S_FORUM_OPTIONS'])) ? $this->_rootref['S_FORUM_OPTIONS'] : ''; ?></select></dd>
 		</dl>
-	<?php } ?>
+	<?php } ?>
+
 	</fieldset>
 
 	<div id="forum_cat_options">
@@ -290,12 +317,14 @@
 			<dt><label for="forum_rules_link"><?php echo ((isset($this->_rootref['L_FORUM_RULES_LINK'])) ? $this->_rootref['L_FORUM_RULES_LINK'] : ((isset($user->lang['FORUM_RULES_LINK'])) ? $user->lang['FORUM_RULES_LINK'] : '{ FORUM_RULES_LINK }')); ?>:</label><br /><span><?php echo ((isset($this->_rootref['L_FORUM_RULES_LINK_EXPLAIN'])) ? $this->_rootref['L_FORUM_RULES_LINK_EXPLAIN'] : ((isset($user->lang['FORUM_RULES_LINK_EXPLAIN'])) ? $user->lang['FORUM_RULES_LINK_EXPLAIN'] : '{ FORUM_RULES_LINK_EXPLAIN }')); ?></span></dt>
 			<dd><input class="text medium" type="text" id="forum_rules_link" name="forum_rules_link" value="<?php echo (isset($this->_rootref['FORUM_RULES_LINK'])) ? $this->_rootref['FORUM_RULES_LINK'] : ''; ?>" maxlength="255" /></dd>
 		</dl>
-	<?php if ($this->_rootref['FORUM_RULES_PREVIEW']) {  ?>
+	<?php if ($this->_rootref['FORUM_RULES_PREVIEW']) {  ?>
+
 		<dl>
 			<dt><label><?php echo ((isset($this->_rootref['L_FORUM_RULES_PREVIEW'])) ? $this->_rootref['L_FORUM_RULES_PREVIEW'] : ((isset($user->lang['FORUM_RULES_PREVIEW'])) ? $user->lang['FORUM_RULES_PREVIEW'] : '{ FORUM_RULES_PREVIEW }')); ?>:</label></dt>
 			<dd><?php echo (isset($this->_rootref['FORUM_RULES_PREVIEW'])) ? $this->_rootref['FORUM_RULES_PREVIEW'] : ''; ?></dd>
 		</dl>
-	<?php } ?>
+	<?php } ?>
+
 		<dl>
 			<dt><label for="forum_rules"><?php echo ((isset($this->_rootref['L_FORUM_RULES'])) ? $this->_rootref['L_FORUM_RULES'] : ((isset($user->lang['FORUM_RULES'])) ? $user->lang['FORUM_RULES'] : '{ FORUM_RULES }')); ?>:</label><br /><span><?php echo ((isset($this->_rootref['L_FORUM_RULES_EXPLAIN'])) ? $this->_rootref['L_FORUM_RULES_EXPLAIN'] : ((isset($user->lang['FORUM_RULES_EXPLAIN'])) ? $user->lang['FORUM_RULES_EXPLAIN'] : '{ FORUM_RULES_EXPLAIN }')); ?></span></dt>
 			<dd><textarea id="forum_rules" name="forum_rules" rows="4" cols="70"><?php echo (isset($this->_rootref['FORUM_RULES_PLAIN'])) ? $this->_rootref['FORUM_RULES_PLAIN'] : ''; ?></textarea></dd>
@@ -310,11 +339,13 @@
 		<legend><?php echo ((isset($this->_rootref['L_SUBMIT'])) ? $this->_rootref['L_SUBMIT'] : ((isset($user->lang['SUBMIT'])) ? $user->lang['SUBMIT'] : '{ SUBMIT }')); ?></legend>
 		<input class="button1" type="submit" id="submit" name="update" value="<?php echo ((isset($this->_rootref['L_SUBMIT'])) ? $this->_rootref['L_SUBMIT'] : ((isset($user->lang['SUBMIT'])) ? $user->lang['SUBMIT'] : '{ SUBMIT }')); ?>" />&nbsp;
 		<input class="button2" type="reset" id="reset" name="reset" value="<?php echo ((isset($this->_rootref['L_RESET'])) ? $this->_rootref['L_RESET'] : ((isset($user->lang['RESET'])) ? $user->lang['RESET'] : '{ RESET }')); ?>" />
-		<?php echo (isset($this->_rootref['S_FORM_TOKEN'])) ? $this->_rootref['S_FORM_TOKEN'] : ''; ?>
+		<?php echo (isset($this->_rootref['S_FORM_TOKEN'])) ? $this->_rootref['S_FORM_TOKEN'] : ''; ?>
+
 	</fieldset>
 	</form>
 
-<?php } else if ($this->_rootref['S_DELETE_FORUM']) {  ?>
+<?php } else if ($this->_rootref['S_DELETE_FORUM']) {  ?>
+
 
 	<a href="<?php echo (isset($this->_rootref['U_BACK'])) ? $this->_rootref['U_BACK'] : ''; ?>" style="float: <?php echo (isset($this->_rootref['S_CONTENT_FLOW_END'])) ? $this->_rootref['S_CONTENT_FLOW_END'] : ''; ?>;">&laquo; <?php echo ((isset($this->_rootref['L_BACK'])) ? $this->_rootref['L_BACK'] : ((isset($user->lang['BACK'])) ? $user->lang['BACK'] : '{ BACK }')); ?></a>
 
@@ -322,12 +353,14 @@
 
 	<p><?php echo ((isset($this->_rootref['L_FORUM_DELETE_EXPLAIN'])) ? $this->_rootref['L_FORUM_DELETE_EXPLAIN'] : ((isset($user->lang['FORUM_DELETE_EXPLAIN'])) ? $user->lang['FORUM_DELETE_EXPLAIN'] : '{ FORUM_DELETE_EXPLAIN }')); ?></p>
 
-	<?php if ($this->_rootref['S_ERROR']) {  ?>
+	<?php if ($this->_rootref['S_ERROR']) {  ?>
+
 		<div class="errorbox">
 			<h3><?php echo ((isset($this->_rootref['L_WARNING'])) ? $this->_rootref['L_WARNING'] : ((isset($user->lang['WARNING'])) ? $user->lang['WARNING'] : '{ WARNING }')); ?></h3>
 			<p><?php echo (isset($this->_rootref['ERROR_MSG'])) ? $this->_rootref['ERROR_MSG'] : ''; ?></p>
 		</div>
-	<?php } ?>
+	<?php } ?>
+
 
 	<form id="acp_forum" method="post" action="<?php echo (isset($this->_rootref['U_ACTION'])) ? $this->_rootref['U_ACTION'] : ''; ?>">
 
@@ -337,32 +370,41 @@
 		<dt><label><?php echo ((isset($this->_rootref['L_FORUM_NAME'])) ? $this->_rootref['L_FORUM_NAME'] : ((isset($user->lang['FORUM_NAME'])) ? $user->lang['FORUM_NAME'] : '{ FORUM_NAME }')); ?>:</label></dt>
 		<dd><strong><?php echo (isset($this->_rootref['FORUM_NAME'])) ? $this->_rootref['FORUM_NAME'] : ''; ?></strong></dd>
 	</dl>
-	<?php if ($this->_rootref['S_FORUM_POST']) {  ?>
+	<?php if ($this->_rootref['S_FORUM_POST']) {  ?>
+
 		<dl>
 			<dt><label for="delete_action"><?php echo ((isset($this->_rootref['L_ACTION'])) ? $this->_rootref['L_ACTION'] : ((isset($user->lang['ACTION'])) ? $user->lang['ACTION'] : '{ ACTION }')); ?>:</label></dt>
 			<dd><label><input type="radio" class="radio" id="delete_action" name="action_posts" value="delete" checked="checked" /> <?php echo ((isset($this->_rootref['L_DELETE_ALL_POSTS'])) ? $this->_rootref['L_DELETE_ALL_POSTS'] : ((isset($user->lang['DELETE_ALL_POSTS'])) ? $user->lang['DELETE_ALL_POSTS'] : '{ DELETE_ALL_POSTS }')); ?></label></dd>
-			<?php if ($this->_rootref['S_MOVE_FORUM_OPTIONS']) {  ?>
+			<?php if ($this->_rootref['S_MOVE_FORUM_OPTIONS']) {  ?>
+
 				<dd><label><input type="radio" class="radio" name="action_posts" value="move" /> <?php echo ((isset($this->_rootref['L_MOVE_POSTS_TO'])) ? $this->_rootref['L_MOVE_POSTS_TO'] : ((isset($user->lang['MOVE_POSTS_TO'])) ? $user->lang['MOVE_POSTS_TO'] : '{ MOVE_POSTS_TO }')); ?></label> <select name="posts_to_id"><?php echo (isset($this->_rootref['S_MOVE_FORUM_OPTIONS'])) ? $this->_rootref['S_MOVE_FORUM_OPTIONS'] : ''; ?></select></dd>
-			<?php } ?>
+			<?php } ?>
+
 		</dl>
-	<?php } if ($this->_rootref['S_HAS_SUBFORUMS']) {  ?>
+	<?php } if ($this->_rootref['S_HAS_SUBFORUMS']) {  ?>
+
 		<dl>
 			<dt><label for="sub_delete_action"><?php echo ((isset($this->_rootref['L_ACTION'])) ? $this->_rootref['L_ACTION'] : ((isset($user->lang['ACTION'])) ? $user->lang['ACTION'] : '{ ACTION }')); ?>:</label></dt>
 			<dd><label><input type="radio" class="radio" id="sub_delete_action" name="action_subforums" value="delete" checked="checked" /> <?php echo ((isset($this->_rootref['L_DELETE_SUBFORUMS'])) ? $this->_rootref['L_DELETE_SUBFORUMS'] : ((isset($user->lang['DELETE_SUBFORUMS'])) ? $user->lang['DELETE_SUBFORUMS'] : '{ DELETE_SUBFORUMS }')); ?></label></dd>
-			<?php if ($this->_rootref['S_FORUMS_LIST']) {  ?>
+			<?php if ($this->_rootref['S_FORUMS_LIST']) {  ?>
+
 				<dd><label><input type="radio" class="radio" name="action_subforums" value="move" /> <?php echo ((isset($this->_rootref['L_MOVE_SUBFORUMS_TO'])) ? $this->_rootref['L_MOVE_SUBFORUMS_TO'] : ((isset($user->lang['MOVE_SUBFORUMS_TO'])) ? $user->lang['MOVE_SUBFORUMS_TO'] : '{ MOVE_SUBFORUMS_TO }')); ?></label> <select name="subforums_to_id"><?php echo (isset($this->_rootref['S_FORUMS_LIST'])) ? $this->_rootref['S_FORUMS_LIST'] : ''; ?></select></dd>
-			<?php } ?>
+			<?php } ?>
+
 		</dl>
-	<?php } ?>
+	<?php } ?>
+
 
 	<p class="quick">
 		<input class="button1" type="submit" name="update" value="<?php echo ((isset($this->_rootref['L_SUBMIT'])) ? $this->_rootref['L_SUBMIT'] : ((isset($user->lang['SUBMIT'])) ? $user->lang['SUBMIT'] : '{ SUBMIT }')); ?>" />
 	</p>
-	<?php echo (isset($this->_rootref['S_FORM_TOKEN'])) ? $this->_rootref['S_FORM_TOKEN'] : ''; ?>
+	<?php echo (isset($this->_rootref['S_FORM_TOKEN'])) ? $this->_rootref['S_FORM_TOKEN'] : ''; ?>
+
 	</fieldset>
 	</form>
 
-<?php } else if ($this->_rootref['S_CONTINUE_SYNC']) {  ?>
+<?php } else if ($this->_rootref['S_CONTINUE_SYNC']) {  ?>
+
 
 	<script type="text/javascript">
 	// <![CDATA[
@@ -378,7 +420,8 @@
 
 	<p><?php echo ((isset($this->_rootref['L_PROGRESS_EXPLAIN'])) ? $this->_rootref['L_PROGRESS_EXPLAIN'] : ((isset($user->lang['PROGRESS_EXPLAIN'])) ? $user->lang['PROGRESS_EXPLAIN'] : '{ PROGRESS_EXPLAIN }')); ?></p>
 
-<?php } else { ?>
+<?php } else { ?>
+
 
 	<script type="text/javascript">
 	// <![CDATA[
@@ -398,12 +441,14 @@
 
 	<p><?php echo ((isset($this->_rootref['L_FORUM_ADMIN_EXPLAIN'])) ? $this->_rootref['L_FORUM_ADMIN_EXPLAIN'] : ((isset($user->lang['FORUM_ADMIN_EXPLAIN'])) ? $user->lang['FORUM_ADMIN_EXPLAIN'] : '{ FORUM_ADMIN_EXPLAIN }')); ?></p>
 
-	<?php if ($this->_rootref['ERROR_MSG']) {  ?>
+	<?php if ($this->_rootref['ERROR_MSG']) {  ?>
+
 		<div class="errorbox">
 			<h3><?php echo ((isset($this->_rootref['L_WARNING'])) ? $this->_rootref['L_WARNING'] : ((isset($user->lang['WARNING'])) ? $user->lang['WARNING'] : '{ WARNING }')); ?></h3>
 			<p><?php echo (isset($this->_rootref['ERROR_MSG'])) ? $this->_rootref['ERROR_MSG'] : ''; ?></p>
 		</div>
-	<?php } if ($this->_rootref['S_RESYNCED']) {  ?>
+	<?php } if ($this->_rootref['S_RESYNCED']) {  ?>
+
 		<script type="text/javascript">
 		// <![CDATA[
 			var close_waitscreen = 1;
@@ -414,49 +459,69 @@
 			<h3><?php echo ((isset($this->_rootref['L_NOTIFY'])) ? $this->_rootref['L_NOTIFY'] : ((isset($user->lang['NOTIFY'])) ? $user->lang['NOTIFY'] : '{ NOTIFY }')); ?></h3>
 			<p><?php echo ((isset($this->_rootref['L_FORUM_RESYNCED'])) ? $this->_rootref['L_FORUM_RESYNCED'] : ((isset($user->lang['FORUM_RESYNCED'])) ? $user->lang['FORUM_RESYNCED'] : '{ FORUM_RESYNCED }')); ?></p>
 		</div>
-	<?php } ?>
+	<?php } ?>
+
 
 	<p><strong><?php echo (isset($this->_rootref['NAVIGATION'])) ? $this->_rootref['NAVIGATION'] : ''; if ($this->_rootref['S_NO_FORUMS']) {  ?> [<a href="<?php echo (isset($this->_rootref['U_EDIT'])) ? $this->_rootref['U_EDIT'] : ''; ?>"><?php echo ((isset($this->_rootref['L_EDIT'])) ? $this->_rootref['L_EDIT'] : ((isset($user->lang['EDIT'])) ? $user->lang['EDIT'] : '{ EDIT }')); ?></a> | <a href="<?php echo (isset($this->_rootref['U_DELETE'])) ? $this->_rootref['U_DELETE'] : ''; ?>"><?php echo ((isset($this->_rootref['L_DELETE'])) ? $this->_rootref['L_DELETE'] : ((isset($user->lang['DELETE'])) ? $user->lang['DELETE'] : '{ DELETE }')); ?></a><?php if (! $this->_rootref['S_LINK']) {  ?> | <a href="<?php echo (isset($this->_rootref['U_SYNC'])) ? $this->_rootref['U_SYNC'] : ''; ?>"><?php echo ((isset($this->_rootref['L_RESYNC'])) ? $this->_rootref['L_RESYNC'] : ((isset($user->lang['RESYNC'])) ? $user->lang['RESYNC'] : '{ RESYNC }')); ?></a><?php } ?>]<?php } ?></strong></p>
 
-	<?php if (sizeof($this->_tpldata['forums'])) {  ?>
+	<?php if (sizeof($this->_tpldata['forums'])) {  ?>
+
 		<table cellspacing="1">
 			<col class="row1" /><col class="row1" /><col class="row2" />
 		<tbody>
-		<?php $_forums_count = (isset($this->_tpldata['forums'])) ? sizeof($this->_tpldata['forums']) : 0;if ($_forums_count) {for ($_forums_i = 0; $_forums_i < $_forums_count; ++$_forums_i){$_forums_val = &$this->_tpldata['forums'][$_forums_i]; ?>
+		<?php $_forums_count = (isset($this->_tpldata['forums'])) ? sizeof($this->_tpldata['forums']) : 0;if ($_forums_count) {for ($_forums_i = 0; $_forums_i < $_forums_count; ++$_forums_i){$_forums_val = &$this->_tpldata['forums'][$_forums_i]; ?>
+
 			<tr>
 				<td style="width: 5%; text-align: center;"><?php echo $_forums_val['FOLDER_IMAGE']; ?></td>
 				<td>
-					<?php if ($_forums_val['FORUM_IMAGE']) {  ?><div style="float: <?php echo (isset($this->_rootref['S_CONTENT_FLOW_BEGIN'])) ? $this->_rootref['S_CONTENT_FLOW_BEGIN'] : ''; ?>; margin-right: 5px;"><?php echo $_forums_val['FORUM_IMAGE']; ?></div><?php } ?>
+					<?php if ($_forums_val['FORUM_IMAGE']) {  ?><div style="float: <?php echo (isset($this->_rootref['S_CONTENT_FLOW_BEGIN'])) ? $this->_rootref['S_CONTENT_FLOW_BEGIN'] : ''; ?>; margin-right: 5px;"><?php echo $_forums_val['FORUM_IMAGE']; ?></div><?php } ?>
+
 					<strong><?php if ($_forums_val['S_FORUM_LINK']) {  echo $_forums_val['FORUM_NAME']; } else { ?><a href="<?php echo $_forums_val['U_FORUM']; ?>"><?php echo $_forums_val['FORUM_NAME']; ?></a><?php } ?></strong>
-					<?php if ($_forums_val['FORUM_DESCRIPTION']) {  ?><br /><span><?php echo $_forums_val['FORUM_DESCRIPTION']; ?></span><?php } if ($_forums_val['S_FORUM_POST']) {  ?><br /><br /><span><?php echo ((isset($this->_rootref['L_TOPICS'])) ? $this->_rootref['L_TOPICS'] : ((isset($user->lang['TOPICS'])) ? $user->lang['TOPICS'] : '{ TOPICS }')); ?>: <strong><?php echo $_forums_val['FORUM_TOPICS']; ?></strong> / <?php echo ((isset($this->_rootref['L_POSTS'])) ? $this->_rootref['L_POSTS'] : ((isset($user->lang['POSTS'])) ? $user->lang['POSTS'] : '{ POSTS }')); ?>: <strong><?php echo $_forums_val['FORUM_POSTS']; ?></strong></span><?php } ?>
+					<?php if ($_forums_val['FORUM_DESCRIPTION']) {  ?><br /><span><?php echo $_forums_val['FORUM_DESCRIPTION']; ?></span><?php } if ($_forums_val['S_FORUM_POST']) {  ?><br /><br /><span><?php echo ((isset($this->_rootref['L_TOPICS'])) ? $this->_rootref['L_TOPICS'] : ((isset($user->lang['TOPICS'])) ? $user->lang['TOPICS'] : '{ TOPICS }')); ?>: <strong><?php echo $_forums_val['FORUM_TOPICS']; ?></strong> / <?php echo ((isset($this->_rootref['L_POSTS'])) ? $this->_rootref['L_POSTS'] : ((isset($user->lang['POSTS'])) ? $user->lang['POSTS'] : '{ POSTS }')); ?>: <strong><?php echo $_forums_val['FORUM_POSTS']; ?></strong></span><?php } ?>
+
 				</td>
 				<td style="vertical-align: top; width: 100px; text-align: right; white-space: nowrap;">
-					<?php if ($_forums_val['S_FIRST_ROW'] && ! $_forums_val['S_LAST_ROW']) {  ?>
-						<?php echo (isset($this->_rootref['ICON_MOVE_UP_DISABLED'])) ? $this->_rootref['ICON_MOVE_UP_DISABLED'] : ''; ?>
+					<?php if ($_forums_val['S_FIRST_ROW'] && ! $_forums_val['S_LAST_ROW']) {  ?>
+
+						<?php echo (isset($this->_rootref['ICON_MOVE_UP_DISABLED'])) ? $this->_rootref['ICON_MOVE_UP_DISABLED'] : ''; ?>
+
 						<a href="<?php echo $_forums_val['U_MOVE_DOWN']; ?>"><?php echo (isset($this->_rootref['ICON_MOVE_DOWN'])) ? $this->_rootref['ICON_MOVE_DOWN'] : ''; ?></a>
-					<?php } else if (! $_forums_val['S_FIRST_ROW'] && ! $_forums_val['S_LAST_ROW']) {  ?>
+					<?php } else if (! $_forums_val['S_FIRST_ROW'] && ! $_forums_val['S_LAST_ROW']) {  ?>
+
 						<a href="<?php echo $_forums_val['U_MOVE_UP']; ?>"><?php echo (isset($this->_rootref['ICON_MOVE_UP'])) ? $this->_rootref['ICON_MOVE_UP'] : ''; ?></a>
 						<a href="<?php echo $_forums_val['U_MOVE_DOWN']; ?>"><?php echo (isset($this->_rootref['ICON_MOVE_DOWN'])) ? $this->_rootref['ICON_MOVE_DOWN'] : ''; ?></a>
-					<?php } else if ($_forums_val['S_LAST_ROW'] && ! $_forums_val['S_FIRST_ROW']) {  ?>
+					<?php } else if ($_forums_val['S_LAST_ROW'] && ! $_forums_val['S_FIRST_ROW']) {  ?>
+
 						<a href="<?php echo $_forums_val['U_MOVE_UP']; ?>"><?php echo (isset($this->_rootref['ICON_MOVE_UP'])) ? $this->_rootref['ICON_MOVE_UP'] : ''; ?></a>
-						<?php echo (isset($this->_rootref['ICON_MOVE_DOWN_DISABLED'])) ? $this->_rootref['ICON_MOVE_DOWN_DISABLED'] : ''; ?>
-					<?php } else { ?>
-						<?php echo (isset($this->_rootref['ICON_MOVE_UP_DISABLED'])) ? $this->_rootref['ICON_MOVE_UP_DISABLED'] : ''; ?>
-						<?php echo (isset($this->_rootref['ICON_MOVE_DOWN_DISABLED'])) ? $this->_rootref['ICON_MOVE_DOWN_DISABLED'] : ''; ?>
-					<?php } ?>
+						<?php echo (isset($this->_rootref['ICON_MOVE_DOWN_DISABLED'])) ? $this->_rootref['ICON_MOVE_DOWN_DISABLED'] : ''; ?>
+
+					<?php } else { ?>
+
+						<?php echo (isset($this->_rootref['ICON_MOVE_UP_DISABLED'])) ? $this->_rootref['ICON_MOVE_UP_DISABLED'] : ''; ?>
+
+						<?php echo (isset($this->_rootref['ICON_MOVE_DOWN_DISABLED'])) ? $this->_rootref['ICON_MOVE_DOWN_DISABLED'] : ''; ?>
+
+					<?php } ?>
+
 					<a href="<?php echo $_forums_val['U_EDIT']; ?>"><?php echo (isset($this->_rootref['ICON_EDIT'])) ? $this->_rootref['ICON_EDIT'] : ''; ?></a>
-					<?php if (! $_forums_val['S_FORUM_LINK']) {  ?>
+					<?php if (! $_forums_val['S_FORUM_LINK']) {  ?>
+
 						<a href="<?php echo $_forums_val['U_SYNC']; ?>" onclick="popup_progress_bar();"><?php echo (isset($this->_rootref['ICON_SYNC'])) ? $this->_rootref['ICON_SYNC'] : ''; ?></a>
-					<?php } else { ?>
-						<?php echo (isset($this->_rootref['ICON_SYNC_DISABLED'])) ? $this->_rootref['ICON_SYNC_DISABLED'] : ''; ?>
-					<?php } ?>
+					<?php } else { ?>
+
+						<?php echo (isset($this->_rootref['ICON_SYNC_DISABLED'])) ? $this->_rootref['ICON_SYNC_DISABLED'] : ''; ?>
+
+					<?php } ?>
+
 					<a href="<?php echo $_forums_val['U_DELETE']; ?>"><?php echo (isset($this->_rootref['ICON_DELETE'])) ? $this->_rootref['ICON_DELETE'] : ''; ?></a>
 				</td>
 			</tr>
-		<?php }} ?>
+		<?php }} ?>
+
 		</tbody>
 		</table>
-	<?php } ?>
+	<?php } ?>
+
 
 	<form id="fselect" method="post" action="<?php echo (isset($this->_rootref['U_SEL_ACTION'])) ? $this->_rootref['U_SEL_ACTION'] : ''; ?>">
 
@@ -464,7 +529,8 @@
 		<?php echo ((isset($this->_rootref['L_SELECT_FORUM'])) ? $this->_rootref['L_SELECT_FORUM'] : ((isset($user->lang['SELECT_FORUM'])) ? $user->lang['SELECT_FORUM'] : '{ SELECT_FORUM }')); ?>: <select name="parent_id" onchange="if(this.options[this.selectedIndex].value != -1){ this.form.submit(); }"><?php echo (isset($this->_rootref['FORUM_BOX'])) ? $this->_rootref['FORUM_BOX'] : ''; ?></select>
 
 		<input class="button2" type="submit" value="<?php echo ((isset($this->_rootref['L_GO'])) ? $this->_rootref['L_GO'] : ((isset($user->lang['GO'])) ? $user->lang['GO'] : '{ GO }')); ?>" />
-		<?php echo (isset($this->_rootref['S_FORM_TOKEN'])) ? $this->_rootref['S_FORM_TOKEN'] : ''; ?>
+		<?php echo (isset($this->_rootref['S_FORM_TOKEN'])) ? $this->_rootref['S_FORM_TOKEN'] : ''; ?>
+
 	</fieldset>
 	</form>
 
@@ -475,7 +541,8 @@
 
 		<input type="text" name="forum_name" value="" maxlength="255" />
 		<input class="button2" name="addforum" type="submit" value="<?php echo ((isset($this->_rootref['L_CREATE_FORUM'])) ? $this->_rootref['L_CREATE_FORUM'] : ((isset($user->lang['CREATE_FORUM'])) ? $user->lang['CREATE_FORUM'] : '{ CREATE_FORUM }')); ?>" />
-		<?php echo (isset($this->_rootref['S_FORM_TOKEN'])) ? $this->_rootref['S_FORM_TOKEN'] : ''; ?>
+		<?php echo (isset($this->_rootref['S_FORM_TOKEN'])) ? $this->_rootref['S_FORM_TOKEN'] : ''; ?>
+
 	</fieldset>
 	</form>
 
