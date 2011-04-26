@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2011 at 10:11 PM
+-- Generation Time: Apr 26, 2011 at 10:56 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -1061,8 +1061,8 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('load_cpf_viewtopic', '0', 0),
 ('load_db_lastread', '1', 0),
 ('load_db_track', '1', 0),
-('load_jumpbox', '1', 0),
-('load_moderators', '1', 0),
+('load_jumpbox', '0', 0),
+('load_moderators', '0', 0),
 ('load_online', '0', 0),
 ('load_online_guests', '0', 0),
 ('load_online_time', '5', 0),
@@ -1130,7 +1130,7 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('session_gc', '3600', 0),
 ('session_length', '3600', 0),
 ('site_desc', 'COM542: Knowledge Management', 0),
-('sitename', 'Course Evaluation', 0),
+('sitename', 'Course Evaluation System', 0),
 ('smilies_path', 'images/smilies', 0),
 ('smilies_per_page', '50', 0),
 ('smtp_auth_method', 'PLAIN', 0),
@@ -1157,18 +1157,19 @@ INSERT INTO `phpbb_config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 ('num_posts', '13', 1),
 ('num_topics', '8', 1),
 ('num_users', '10', 1),
-('rand_seed', 'b6aa7bb0c1e3eadc1960a1a6968f2085', 1),
-('rand_seed_last_update', '1303848556', 1),
+('rand_seed', 'bf4c86931eb20697c85f911e00cee1cf', 1),
+('rand_seed_last_update', '1303851233', 1),
 ('record_online_date', '1301874693', 1),
 ('record_online_users', '2', 1),
 ('search_indexing_state', '', 1),
 ('search_last_gc', '1303848556', 1),
-('session_last_gc', '1303688460', 1),
+('session_last_gc', '1303848988', 1),
 ('upload_dir_size', '0', 1),
 ('warnings_last_gc', '1303848467', 1),
 ('board_startdate', '1301716297', 0),
 ('default_lang', 'en', 0),
-('add_user_version', '1.0.1', 0);
+('add_user_version', '1.0.1', 0),
+('questionnaire_unique_id', '70e0449313b4df88', 0);
 
 -- --------------------------------------------------------
 
@@ -1599,7 +1600,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_log` (
   KEY `topic_id` (`topic_id`),
   KEY `reportee_id` (`reportee_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=100 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=109 ;
 
 --
 -- Dumping data for table `phpbb_log`
@@ -1704,7 +1705,16 @@ INSERT INTO `phpbb_log` (`log_id`, `log_type`, `user_id`, `forum_id`, `topic_id`
 (96, 0, 2, 0, 0, 0, '127.0.0.1', 1303691363, 0x4c4f475f555345525f4144444544, 0x613a313a7b693a303b733a383a224630392d34323939223b7d),
 (97, 2, 2, 0, 0, 0, '127.0.0.1', 1303691364, 0x4c4f475f4552524f525f454d41494c, 0x613a313a7b693a303b733a3430353a223c7374726f6e673e454d41494c2f5048502f6d61696c28293c2f7374726f6e673e3c6272202f3e3c656d3e2f61646d2f696e6465782e7068703c2f656d3e3c6272202f3e3c6272202f3e3c623e5b70687042422044656275675d20504850204e6f746963653c2f623e3a20696e2066696c65203c623e2f696e636c756465732f66756e6374696f6e735f6d657373656e6765722e7068703c2f623e206f6e206c696e65203c623e313632313c2f623e3a203c623e6d61696c2829205b3c6120687265663d2766756e6374696f6e2e6d61696c273e66756e6374696f6e2e6d61696c3c2f613e5d3a204661696c656420746f20636f6e6e65637420746f206d61696c736572766572206174202671756f743b6c6f63616c686f73742671756f743b20706f72742032352c2076657269667920796f7572202671756f743b534d54502671756f743b20616e64202671756f743b736d74705f706f72742671756f743b2073657474696e6720696e207068702e696e69206f722075736520696e695f73657428293c2f623e3c6272202f3e0a3c6272202f3e223b7d),
 (98, 0, 2, 0, 0, 0, '127.0.0.1', 1303848471, 0x4c4f475f41444d494e5f415554485f53554343455353, ''),
-(99, 0, 2, 0, 0, 0, '127.0.0.1', 1303848552, 0x4c4f475f434f4e4649475f4c4f4144, '');
+(99, 0, 2, 0, 0, 0, '127.0.0.1', 1303848552, 0x4c4f475f434f4e4649475f4c4f4144, ''),
+(100, 0, 2, 0, 0, 0, '127.0.0.1', 1303849116, 0x4c4f475f41444d494e5f415554485f53554343455353, ''),
+(101, 0, 2, 0, 0, 0, '127.0.0.1', 1303849214, 0x4c4f475f434f4e4649475f53455454494e4753, ''),
+(102, 0, 2, 0, 0, 0, '127.0.0.1', 1303849611, 0x4c4f475f434f4e4649475f4645415455524553, ''),
+(103, 0, 2, 0, 0, 0, '127.0.0.1', 1303849703, 0x4c4f475f434f4e4649475f4645415455524553, ''),
+(104, 0, 2, 0, 0, 0, '127.0.0.1', 1303850335, 0x4c4f475f41444d494e5f415554485f53554343455353, ''),
+(105, 0, 2, 0, 0, 0, '127.0.0.1', 1303850348, 0x4c4f475f50555247455f4341434845, ''),
+(106, 0, 2, 0, 0, 0, '127.0.0.1', 1303850620, 0x4c4f475f41444d494e5f415554485f53554343455353, ''),
+(107, 0, 2, 0, 0, 0, '127.0.0.1', 1303850634, 0x4c4f475f434f4e4649475f4645415455524553, ''),
+(108, 0, 2, 0, 0, 0, '127.0.0.1', 1303851195, 0x4c4f475f50555247455f4341434845, '');
 
 -- --------------------------------------------------------
 
@@ -2865,8 +2875,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_sessions` (
 --
 
 INSERT INTO `phpbb_sessions` (`session_id`, `session_user_id`, `session_forum_id`, `session_last_visit`, `session_start`, `session_time`, `session_ip`, `session_browser`, `session_forwarded_for`, `session_page`, `session_viewonline`, `session_autologin`, `session_admin`) VALUES
-('08fbca395f47081bcb52c8de5b567048', 2, 0, 1303451204, 1303688548, 1303691439, '127.0.0.1', 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16', '', 'memberlist.php?mode=searchuser&form=select_user&field=username&select_single=true', 1, 0, 1),
-('4f5ce68d9cdaef38a4e422bdb31cae7c', 2, 0, 1303451204, 1303848470, 1303848556, '127.0.0.1', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16', '', 'index.php', 1, 0, 1),
+('f7ec07da1246cb160ddb48bcdf9cc716', 1, 0, 1303851233, 1303851233, 1303851235, '127.0.0.1', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16', '', 'index.php', 1, 0, 0),
 ('f7d57bb20142728ed59549a9a10c17c1', 1, 0, 1303848407, 1303848407, 1303848407, '192.168.0.198', 'Mozilla/4.0 (compatible; MSIE 5.5; Win32)', '', 'index.php', 1, 0, 0);
 
 -- --------------------------------------------------------
@@ -3610,7 +3619,7 @@ CREATE TABLE IF NOT EXISTS `phpbb_users` (
 
 INSERT INTO `phpbb_users` (`user_id`, `user_type`, `group_id`, `user_permissions`, `user_perm_from`, `user_ip`, `user_regdate`, `username`, `username_clean`, `user_password`, `user_passchg`, `user_pass_convert`, `user_email`, `user_email_hash`, `user_birthday`, `user_lastvisit`, `user_lastmark`, `user_lastpost_time`, `user_lastpage`, `user_last_confirm_key`, `user_last_search`, `user_warnings`, `user_last_warning`, `user_login_attempts`, `user_inactive_reason`, `user_inactive_time`, `user_posts`, `user_lang`, `user_timezone`, `user_dst`, `user_dateformat`, `user_style`, `user_rank`, `user_colour`, `user_new_privmsg`, `user_unread_privmsg`, `user_last_privmsg`, `user_message_rules`, `user_full_folder`, `user_emailtime`, `user_topic_show_days`, `user_topic_sortby_type`, `user_topic_sortby_dir`, `user_post_show_days`, `user_post_sortby_type`, `user_post_sortby_dir`, `user_notify`, `user_notify_pm`, `user_notify_type`, `user_allow_pm`, `user_allow_viewonline`, `user_allow_viewemail`, `user_allow_massemail`, `user_options`, `user_avatar`, `user_avatar_type`, `user_avatar_width`, `user_avatar_height`, `user_sig`, `user_sig_bbcode_uid`, `user_sig_bbcode_bitfield`, `user_from`, `user_icq`, `user_aim`, `user_yim`, `user_msnm`, `user_jabber`, `user_website`, `user_occ`, `user_interests`, `user_actkey`, `user_newpasswd`, `user_form_salt`, `user_new`, `user_reminded`, `user_reminded_time`) VALUES
 (1, 2, 1, 0x30303030303030303030336b687261336e6b0a0a6931636a796f3030303030300a0a0a6931636a796f3030303030300a6931636a796f3030303030300a303030303030303030303030, 0, '', 1301716297, 'Anonymous', 'anonymous', '', 0, 0, '', 0, '', 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'd M Y H:i', 2, 0, '', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'e018ddee4cf7d0e5', 1, 0, 0),
-(2, 3, 5, 0x7a696b307a6a7a696b307a6a7a696b30796f0a0a7a696b307a6a7a68623274630a0a0a7a696b307a6a7a68623274630a7a696b307a6a7a68623274630a7a696b307a69303030303030, 0, '127.0.0.1', 1301716297, 'admin', 'admin', '$H$9xGRS2y74SdF9pYJBQKU7meiV9a9DQ.', 0, 0, 'aroback@iit.edu', 222015273015, '', 1303451204, 0, 1303451194, 'index.php', '', 0, 0, 0, 0, 0, 0, 9, 'en', -6.00, 0, 'D M d, Y g:i a', 2, 1, 'AA0000', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0876c2b814972728', 0, 0, 0),
+(2, 3, 5, 0x7a696b307a6a7a696b307a6a7a696b30796f0a0a7a696b307a6a7a68623274630a0a0a7a696b307a6a7a68623274630a7a696b307a6a7a68623274630a7a696b307a69303030303030, 0, '127.0.0.1', 1301716297, 'admin', 'admin', '$H$9xGRS2y74SdF9pYJBQKU7meiV9a9DQ.', 0, 0, 'aroback@iit.edu', 222015273015, '', 1303851211, 0, 1303451194, 'memberlist.php?mode=searchuser&form=select_user&field=username&select_single=true', '', 0, 0, 0, 0, 0, 0, 9, 'en', -6.00, 0, 'D M d, Y g:i a', 2, 1, 'AA0000', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 1, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ec644292f4ded148', 0, 0, 0),
 (3, 2, 6, '', 0, '', 1301716308, 'AdsBot [Google]', 'adsbot [google]', '', 1301716308, 0, '', 0, '', 0, 1301716308, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '7273e3c9814dac7d', 0, 0, 0),
 (4, 2, 6, '', 0, '', 1301716308, 'Alexa [Bot]', 'alexa [bot]', '', 1301716308, 0, '', 0, '', 0, 1301716308, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '087279a24e2da5ba', 0, 0, 0),
 (5, 2, 6, '', 0, '', 1301716308, 'Alta Vista [Bot]', 'alta vista [bot]', '', 1301716308, 0, '', 0, '', 0, 1301716308, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 'en', 0.00, 0, 'D M d, Y g:i a', 2, 0, '9E8DA7', 0, 0, 0, 0, -3, 0, 0, 't', 'd', 0, 't', 'a', 0, 1, 0, 1, 1, 1, 0, 230271, '', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '5338c76ac48dcafb', 0, 0, 0),
