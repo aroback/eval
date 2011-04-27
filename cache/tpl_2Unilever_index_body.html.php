@@ -10,7 +10,7 @@
 
 <br clear="all" />
 
-<?php $this->_tpl_include('breadcrumbs.html'); if ($this->_rootref['S_DISPLAY_ONLINE_LIST']) {  ?>
+<!-- Deleted include for breadcrumbs.html --><?php if ($this->_rootref['S_DISPLAY_ONLINE_LIST']) {  ?>
 	<br clear="all" />
 
 	<table class="tablebg" width="100%" cellspacing="1">
@@ -47,7 +47,7 @@
 
 <br clear="all" />
 
-<table class="tablebg" width="100%" cellspacing="1">
+<!--<table class="tablebg" width="100%" cellspacing="1">
 <tr>
 	<td class="cat" colspan="2"><h4><?php echo ((isset($this->_rootref['L_STATISTICS'])) ? $this->_rootref['L_STATISTICS'] : ((isset($user->lang['STATISTICS'])) ? $user->lang['STATISTICS'] : '{ STATISTICS }')); ?></h4></td>
 </tr>
@@ -57,7 +57,7 @@
 </tr>
 </table>
 
-<br clear="all" />
+<br clear="all" />-->
 
 <table class="legend">
 <tr>
