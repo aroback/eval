@@ -1,52 +1,43 @@
-<?php if (!defined('IN_PHPBB')) exit; $this->_tpl_include('overall_header.html'); ?>
-
+<?php if (!defined('IN_PHPBB')) exit; $this->_tpl_include('overall_header.html'); ?>
 
 <a name="maincontent"></a>
 
-<?php if ($this->_rootref['S_RESTORE_PERMISSIONS']) {  ?>
-
+<?php if ($this->_rootref['S_RESTORE_PERMISSIONS']) {  ?>
 
 	<h1><?php echo ((isset($this->_rootref['L_PERMISSIONS_TRANSFERRED'])) ? $this->_rootref['L_PERMISSIONS_TRANSFERRED'] : ((isset($user->lang['PERMISSIONS_TRANSFERRED'])) ? $user->lang['PERMISSIONS_TRANSFERRED'] : '{ PERMISSIONS_TRANSFERRED }')); ?></h1>
 
 	<p><?php echo ((isset($this->_rootref['L_PERMISSIONS_TRANSFERRED_EXPLAIN'])) ? $this->_rootref['L_PERMISSIONS_TRANSFERRED_EXPLAIN'] : ((isset($user->lang['PERMISSIONS_TRANSFERRED_EXPLAIN'])) ? $user->lang['PERMISSIONS_TRANSFERRED_EXPLAIN'] : '{ PERMISSIONS_TRANSFERRED_EXPLAIN }')); ?></p>
 
-<?php } else { ?>
-
+<?php } else { ?>
 
 	<h1><?php echo ((isset($this->_rootref['L_WELCOME_PHPBB'])) ? $this->_rootref['L_WELCOME_PHPBB'] : ((isset($user->lang['WELCOME_PHPBB'])) ? $user->lang['WELCOME_PHPBB'] : '{ WELCOME_PHPBB }')); ?></h1>
 
 	<p><?php echo ((isset($this->_rootref['L_ADMIN_INTRO'])) ? $this->_rootref['L_ADMIN_INTRO'] : ((isset($user->lang['ADMIN_INTRO'])) ? $user->lang['ADMIN_INTRO'] : '{ ADMIN_INTRO }')); ?></p>
 
-	<?php if ($this->_rootref['S_VERSIONCHECK_FAIL']) {  ?>
-
+	<?php if ($this->_rootref['S_VERSIONCHECK_FAIL']) {  ?>
 		<div class="errorbox notice">
 			<p><?php echo ((isset($this->_rootref['L_VERSIONCHECK_FAIL'])) ? $this->_rootref['L_VERSIONCHECK_FAIL'] : ((isset($user->lang['VERSIONCHECK_FAIL'])) ? $user->lang['VERSIONCHECK_FAIL'] : '{ VERSIONCHECK_FAIL }')); ?></p>
 			<p><a href="<?php echo (isset($this->_rootref['U_VERSIONCHECK_FORCE'])) ? $this->_rootref['U_VERSIONCHECK_FORCE'] : ''; ?>"><?php echo ((isset($this->_rootref['L_VERSIONCHECK_FORCE_UPDATE'])) ? $this->_rootref['L_VERSIONCHECK_FORCE_UPDATE'] : ((isset($user->lang['VERSIONCHECK_FORCE_UPDATE'])) ? $user->lang['VERSIONCHECK_FORCE_UPDATE'] : '{ VERSIONCHECK_FORCE_UPDATE }')); ?></a> &middot; <a href="<?php echo (isset($this->_rootref['U_VERSIONCHECK'])) ? $this->_rootref['U_VERSIONCHECK'] : ''; ?>"><?php echo ((isset($this->_rootref['L_MORE_INFORMATION'])) ? $this->_rootref['L_MORE_INFORMATION'] : ((isset($user->lang['MORE_INFORMATION'])) ? $user->lang['MORE_INFORMATION'] : '{ MORE_INFORMATION }')); ?></a></p>
 		</div>
-	<?php } else if (! $this->_rootref['S_VERSION_UP_TO_DATE']) {  ?>
-
+	<?php } else if (! $this->_rootref['S_VERSION_UP_TO_DATE']) {  ?>
 		<div class="errorbox">
 			<p><?php echo ((isset($this->_rootref['L_VERSION_NOT_UP_TO_DATE_TITLE'])) ? $this->_rootref['L_VERSION_NOT_UP_TO_DATE_TITLE'] : ((isset($user->lang['VERSION_NOT_UP_TO_DATE_TITLE'])) ? $user->lang['VERSION_NOT_UP_TO_DATE_TITLE'] : '{ VERSION_NOT_UP_TO_DATE_TITLE }')); ?></p>
 			<p><a href="<?php echo (isset($this->_rootref['U_VERSIONCHECK_FORCE'])) ? $this->_rootref['U_VERSIONCHECK_FORCE'] : ''; ?>"><?php echo ((isset($this->_rootref['L_VERSIONCHECK_FORCE_UPDATE'])) ? $this->_rootref['L_VERSIONCHECK_FORCE_UPDATE'] : ((isset($user->lang['VERSIONCHECK_FORCE_UPDATE'])) ? $user->lang['VERSIONCHECK_FORCE_UPDATE'] : '{ VERSIONCHECK_FORCE_UPDATE }')); ?></a> &middot; <a href="<?php echo (isset($this->_rootref['U_VERSIONCHECK'])) ? $this->_rootref['U_VERSIONCHECK'] : ''; ?>"><?php echo ((isset($this->_rootref['L_MORE_INFORMATION'])) ? $this->_rootref['L_MORE_INFORMATION'] : ((isset($user->lang['MORE_INFORMATION'])) ? $user->lang['MORE_INFORMATION'] : '{ MORE_INFORMATION }')); ?></a></p>
 		</div>
-	<?php } if ($this->_rootref['S_REMOVE_INSTALL']) {  ?>
-
+	<?php } if ($this->_rootref['S_REMOVE_INSTALL']) {  ?>
 		<div class="errorbox">
 			<h3><?php echo ((isset($this->_rootref['L_WARNING'])) ? $this->_rootref['L_WARNING'] : ((isset($user->lang['WARNING'])) ? $user->lang['WARNING'] : '{ WARNING }')); ?></h3>
 			<p><?php echo ((isset($this->_rootref['L_REMOVE_INSTALL'])) ? $this->_rootref['L_REMOVE_INSTALL'] : ((isset($user->lang['REMOVE_INSTALL'])) ? $user->lang['REMOVE_INSTALL'] : '{ REMOVE_INSTALL }')); ?></p>
 		</div>
-	<?php } if ($this->_rootref['S_WRITABLE_CONFIG']) {  ?>
-
+	<?php } if ($this->_rootref['S_WRITABLE_CONFIG']) {  ?>
 		<div class="errorbox notice">
 			<p><?php echo ((isset($this->_rootref['L_WRITABLE_CONFIG'])) ? $this->_rootref['L_WRITABLE_CONFIG'] : ((isset($user->lang['WRITABLE_CONFIG'])) ? $user->lang['WRITABLE_CONFIG'] : '{ WRITABLE_CONFIG }')); ?></p>
 		</div>
-	<?php } if ($this->_rootref['S_PHP_VERSION_OLD']) {  ?>
-
+	<?php } if ($this->_rootref['S_PHP_VERSION_OLD']) {  ?>
 		<div class="errorbox notice">
 			<p><?php echo ((isset($this->_rootref['L_PHP_VERSION_OLD'])) ? $this->_rootref['L_PHP_VERSION_OLD'] : ((isset($user->lang['PHP_VERSION_OLD'])) ? $user->lang['PHP_VERSION_OLD'] : '{ PHP_VERSION_OLD }')); ?></p>
 		</div>
-	<?php } ?>
-
+	<?php } ?>
 
 	<table cellspacing="1">
 		<caption><?php echo ((isset($this->_rootref['L_FORUM_STATS'])) ? $this->_rootref['L_FORUM_STATS'] : ((isset($user->lang['FORUM_STATS'])) ? $user->lang['FORUM_STATS'] : '{ FORUM_STATS }')); ?></caption>
@@ -109,22 +100,18 @@
 		<td>
 			<strong><a href="<?php echo (isset($this->_rootref['U_VERSIONCHECK'])) ? $this->_rootref['U_VERSIONCHECK'] : ''; ?>" <?php if ($this->_rootref['S_VERSION_UP_TO_DATE']) {  ?>style="color: #228822;"<?php } else { ?>style="color: #BC2A4D;"<?php } ?> title="<?php echo ((isset($this->_rootref['L_MORE_INFORMATION'])) ? $this->_rootref['L_MORE_INFORMATION'] : ((isset($user->lang['MORE_INFORMATION'])) ? $user->lang['MORE_INFORMATION'] : '{ MORE_INFORMATION }')); ?>"><?php echo (isset($this->_rootref['BOARD_VERSION'])) ? $this->_rootref['BOARD_VERSION'] : ''; ?></a></strong> [&nbsp;<a href="<?php echo (isset($this->_rootref['U_VERSIONCHECK_FORCE'])) ? $this->_rootref['U_VERSIONCHECK_FORCE'] : ''; ?>"><?php echo ((isset($this->_rootref['L_VERSIONCHECK_FORCE_UPDATE'])) ? $this->_rootref['L_VERSIONCHECK_FORCE_UPDATE'] : ((isset($user->lang['VERSIONCHECK_FORCE_UPDATE'])) ? $user->lang['VERSIONCHECK_FORCE_UPDATE'] : '{ VERSIONCHECK_FORCE_UPDATE }')); ?></a>&nbsp;]
 		</td>
-	<?php if ($this->_rootref['S_TOTAL_ORPHAN']) {  ?>
-
+	<?php if ($this->_rootref['S_TOTAL_ORPHAN']) {  ?>
 		<td><?php echo ((isset($this->_rootref['L_NUMBER_ORPHAN'])) ? $this->_rootref['L_NUMBER_ORPHAN'] : ((isset($user->lang['NUMBER_ORPHAN'])) ? $user->lang['NUMBER_ORPHAN'] : '{ NUMBER_ORPHAN }')); ?>: </td>
 		<td><strong><?php echo (isset($this->_rootref['TOTAL_ORPHAN'])) ? $this->_rootref['TOTAL_ORPHAN'] : ''; ?></strong></td>
-	<?php } else { ?>
-
+	<?php } else { ?>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
-	<?php } ?>
-
+	<?php } ?>
 	</tr>
 	</tbody>
 	</table>
 
-	<?php if ($this->_rootref['S_ACTION_OPTIONS']) {  ?>
-
+	<?php if ($this->_rootref['S_ACTION_OPTIONS']) {  ?>
 		<fieldset>
 			<legend><?php echo ((isset($this->_rootref['L_STATISTIC_RESYNC_OPTIONS'])) ? $this->_rootref['L_STATISTIC_RESYNC_OPTIONS'] : ((isset($user->lang['STATISTIC_RESYNC_OPTIONS'])) ? $user->lang['STATISTIC_RESYNC_OPTIONS'] : '{ STATISTIC_RESYNC_OPTIONS }')); ?></legend>
 
@@ -163,8 +150,7 @@
 				</dl>
 			</form>
 
-			<?php if ($this->_rootref['S_FOUNDER']) {  ?>
-
+			<?php if ($this->_rootref['S_FOUNDER']) {  ?>
 			<form id="action_purge_sessions_form" method="post" action="<?php echo (isset($this->_rootref['U_ACTION'])) ? $this->_rootref['U_ACTION'] : ''; ?>">
 				<dl>
 					<dt><label for="action_purge_sessions"><?php echo ((isset($this->_rootref['L_PURGE_SESSIONS'])) ? $this->_rootref['L_PURGE_SESSIONS'] : ((isset($user->lang['PURGE_SESSIONS'])) ? $user->lang['PURGE_SESSIONS'] : '{ PURGE_SESSIONS }')); ?></label><br /><span><?php echo ((isset($this->_rootref['L_PURGE_SESSIONS_EXPLAIN'])) ? $this->_rootref['L_PURGE_SESSIONS_EXPLAIN'] : ((isset($user->lang['PURGE_SESSIONS_EXPLAIN'])) ? $user->lang['PURGE_SESSIONS_EXPLAIN'] : '{ PURGE_SESSIONS_EXPLAIN }')); ?></span></dt>
@@ -177,11 +163,9 @@
 					<dd><input type="hidden" name="action" value="purge_cache" /><input class="button2" type="submit" id="action_purge_cache" name="action_purge_cache" value="<?php echo ((isset($this->_rootref['L_RUN'])) ? $this->_rootref['L_RUN'] : ((isset($user->lang['RUN'])) ? $user->lang['RUN'] : '{ RUN }')); ?>" /></dd>
 				</dl>
 			</form>
-			<?php } ?>
-
+			<?php } ?>
   		</fieldset>
-	<?php } if (sizeof($this->_tpldata['log'])) {  ?>
-
+	<?php } if (sizeof($this->_tpldata['log'])) {  ?>
 		<h2><?php echo ((isset($this->_rootref['L_ADMIN_LOG'])) ? $this->_rootref['L_ADMIN_LOG'] : ((isset($user->lang['ADMIN_LOG'])) ? $user->lang['ADMIN_LOG'] : '{ ADMIN_LOG }')); ?></h2>
 
 		<p><?php echo ((isset($this->_rootref['L_ADMIN_LOG_INDEX_EXPLAIN'])) ? $this->_rootref['L_ADMIN_LOG_INDEX_EXPLAIN'] : ((isset($user->lang['ADMIN_LOG_INDEX_EXPLAIN'])) ? $user->lang['ADMIN_LOG_INDEX_EXPLAIN'] : '{ ADMIN_LOG_INDEX_EXPLAIN }')); ?></p>
@@ -198,23 +182,20 @@
 		</tr>
 		</thead>
 		<tbody>
-		<?php $_log_count = (isset($this->_tpldata['log'])) ? sizeof($this->_tpldata['log']) : 0;if ($_log_count) {for ($_log_i = 0; $_log_i < $_log_count; ++$_log_i){$_log_val = &$this->_tpldata['log'][$_log_i]; if (!($_log_val['S_ROW_COUNT'] & 1)  ) {  ?><tr class="row1"><?php } else { ?><tr class="row2"><?php } ?>
-
+		<?php $_log_count = (isset($this->_tpldata['log'])) ? sizeof($this->_tpldata['log']) : 0;if ($_log_count) {for ($_log_i = 0; $_log_i < $_log_count; ++$_log_i){$_log_val = &$this->_tpldata['log'][$_log_i]; if (!($_log_val['S_ROW_COUNT'] & 1)  ) {  ?><tr class="row1"><?php } else { ?><tr class="row2"><?php } ?>
 
 				<td><?php echo $_log_val['USERNAME']; ?></td>
 				<td style="text-align: center;"><?php echo $_log_val['IP']; ?></td>
 				<td style="text-align: center;"><?php echo $_log_val['DATE']; ?></td>
 				<td><?php echo $_log_val['ACTION']; ?></td>
 			</tr>
-		<?php }} ?>
-
+		<?php }} ?>
 		</tbody>
 		</table>
 
 		<br />
 
-	<?php } if ($this->_rootref['S_INACTIVE_USERS']) {  ?>
-
+	<?php } if ($this->_rootref['S_INACTIVE_USERS']) {  ?>
 		<h2><?php echo ((isset($this->_rootref['L_INACTIVE_USERS'])) ? $this->_rootref['L_INACTIVE_USERS'] : ((isset($user->lang['INACTIVE_USERS'])) ? $user->lang['INACTIVE_USERS'] : '{ INACTIVE_USERS }')); ?></h2>
 
 		<p><?php echo ((isset($this->_rootref['L_INACTIVE_USERS_EXPLAIN_INDEX'])) ? $this->_rootref['L_INACTIVE_USERS_EXPLAIN_INDEX'] : ((isset($user->lang['INACTIVE_USERS_EXPLAIN_INDEX'])) ? $user->lang['INACTIVE_USERS_EXPLAIN_INDEX'] : '{ INACTIVE_USERS_EXPLAIN_INDEX }')); ?></p>
@@ -232,32 +213,25 @@
 		</tr>
 		</thead>
 		<tbody>
-		<?php $_inactive_count = (isset($this->_tpldata['inactive'])) ? sizeof($this->_tpldata['inactive']) : 0;if ($_inactive_count) {for ($_inactive_i = 0; $_inactive_i < $_inactive_count; ++$_inactive_i){$_inactive_val = &$this->_tpldata['inactive'][$_inactive_i]; if (!($_inactive_val['S_ROW_COUNT'] & 1)  ) {  ?><tr class="row1"><?php } else { ?><tr class="row2"><?php } ?>
-
+		<?php $_inactive_count = (isset($this->_tpldata['inactive'])) ? sizeof($this->_tpldata['inactive']) : 0;if ($_inactive_count) {for ($_inactive_i = 0; $_inactive_i < $_inactive_count; ++$_inactive_i){$_inactive_val = &$this->_tpldata['inactive'][$_inactive_i]; if (!($_inactive_val['S_ROW_COUNT'] & 1)  ) {  ?><tr class="row1"><?php } else { ?><tr class="row2"><?php } ?>
 
 				<td style="vertical-align: top;">
-					<?php echo $_inactive_val['USERNAME_FULL']; ?>
-
-					<?php if ($_inactive_val['POSTS']) {  ?><br /><?php echo ((isset($this->_rootref['L_POSTS'])) ? $this->_rootref['L_POSTS'] : ((isset($user->lang['POSTS'])) ? $user->lang['POSTS'] : '{ POSTS }')); ?>: <strong><?php echo $_inactive_val['POSTS']; ?></strong> [<a href="<?php echo $_inactive_val['U_SEARCH_USER']; ?>"><?php echo ((isset($this->_rootref['L_SEARCH_USER_POSTS'])) ? $this->_rootref['L_SEARCH_USER_POSTS'] : ((isset($user->lang['SEARCH_USER_POSTS'])) ? $user->lang['SEARCH_USER_POSTS'] : '{ SEARCH_USER_POSTS }')); ?></a>]<?php } ?>
-
+					<?php echo $_inactive_val['USERNAME_FULL']; ?>
+					<?php if ($_inactive_val['POSTS']) {  ?><br /><?php echo ((isset($this->_rootref['L_POSTS'])) ? $this->_rootref['L_POSTS'] : ((isset($user->lang['POSTS'])) ? $user->lang['POSTS'] : '{ POSTS }')); ?>: <strong><?php echo $_inactive_val['POSTS']; ?></strong> [<a href="<?php echo $_inactive_val['U_SEARCH_USER']; ?>"><?php echo ((isset($this->_rootref['L_SEARCH_USER_POSTS'])) ? $this->_rootref['L_SEARCH_USER_POSTS'] : ((isset($user->lang['SEARCH_USER_POSTS'])) ? $user->lang['SEARCH_USER_POSTS'] : '{ SEARCH_USER_POSTS }')); ?></a>]<?php } ?>
 				</td>
 				<td style="vertical-align: top;"><?php echo $_inactive_val['JOINED']; ?></td>
 				<td style="vertical-align: top;"><?php echo $_inactive_val['INACTIVE_DATE']; ?></td>
 				<td style="vertical-align: top;"><?php echo $_inactive_val['LAST_VISIT']; ?></td>
 				<td style="vertical-align: top;">
-					<?php echo $_inactive_val['REASON']; ?>
-
-					<?php if ($_inactive_val['REMINDED']) {  ?><br /><?php echo $_inactive_val['REMINDED_EXPLAIN']; } ?>
-
+					<?php echo $_inactive_val['REASON']; ?>
+					<?php if ($_inactive_val['REMINDED']) {  ?><br /><?php echo $_inactive_val['REMINDED_EXPLAIN']; } ?>
 				</td>
 			</tr>
-		<?php }} else { ?>
-
+		<?php }} else { ?>
 			<tr>
 				<td colspan="5" style="text-align: center;"><?php echo ((isset($this->_rootref['L_NO_INACTIVE_USERS'])) ? $this->_rootref['L_NO_INACTIVE_USERS'] : ((isset($user->lang['NO_INACTIVE_USERS'])) ? $user->lang['NO_INACTIVE_USERS'] : '{ NO_INACTIVE_USERS }')); ?></td>
 			</tr>
-		<?php } ?>
-
+		<?php } ?>
 		</tbody>
 		</table>
 

@@ -6,8 +6,7 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta http-equiv="Content-Language" content="<?php echo (isset($this->_rootref['S_USER_LANG'])) ? $this->_rootref['S_USER_LANG'] : ''; ?>" />
 <meta http-equiv="imagetoolbar" content="no" />
-<?php if ($this->_rootref['META']) {  echo (isset($this->_rootref['META'])) ? $this->_rootref['META'] : ''; } ?>
-
+<?php if ($this->_rootref['META']) {  echo (isset($this->_rootref['META'])) ? $this->_rootref['META'] : ''; } ?>
 <title><?php echo (isset($this->_rootref['PAGE_TITLE'])) ? $this->_rootref['PAGE_TITLE'] : ''; ?></title>
 
 <link href="style/admin.css" rel="stylesheet" type="text/css" media="screen" />
@@ -133,16 +132,13 @@ function switch_menu()
 			handle.style.backgroundImage = 'url(images/toggle.gif)';
 			handle.style.backgroundRepeat = 'no-repeat';
 
-			<?php if ($this->_rootref['S_CONTENT_DIRECTION'] == ('rtl')) {  ?>
-
+			<?php if ($this->_rootref['S_CONTENT_DIRECTION'] == ('rtl')) {  ?>
 				handle.style.backgroundPosition = '0% 50%';
 				toggle.style.left = '96%';
-			<?php } else { ?>
-
+			<?php } else { ?>
 				handle.style.backgroundPosition = '100% 50%';
 				toggle.style.left = '0';
-			<?php } ?>
-
+			<?php } ?>
 		break;
 
 		// show
@@ -154,16 +150,13 @@ function switch_menu()
 			handle.style.backgroundImage = 'url(images/toggle.gif)';
 			handle.style.backgroundRepeat = 'no-repeat';
 
-			<?php if ($this->_rootref['S_CONTENT_DIRECTION'] == ('rtl')) {  ?>
-
+			<?php if ($this->_rootref['S_CONTENT_DIRECTION'] == ('rtl')) {  ?>
 				handle.style.backgroundPosition = '100% 50%';
 				toggle.style.left = '75%';
-			<?php } else { ?>
-
+			<?php } else { ?>
 				handle.style.backgroundPosition = '0% 50%';
 				toggle.style.left = '15%';
-			<?php } ?>
-
+			<?php } ?>
 		break;
 	}
 }
@@ -184,11 +177,9 @@ function switch_menu()
 	<div id="page-body">
 		<div id="tabs">
 			<ul>
-			<?php $_t_block1_count = (isset($this->_tpldata['t_block1'])) ? sizeof($this->_tpldata['t_block1']) : 0;if ($_t_block1_count) {for ($_t_block1_i = 0; $_t_block1_i < $_t_block1_count; ++$_t_block1_i){$_t_block1_val = &$this->_tpldata['t_block1'][$_t_block1_i]; ?>
-
+			<?php $_t_block1_count = (isset($this->_tpldata['t_block1'])) ? sizeof($this->_tpldata['t_block1']) : 0;if ($_t_block1_count) {for ($_t_block1_i = 0; $_t_block1_i < $_t_block1_count; ++$_t_block1_i){$_t_block1_val = &$this->_tpldata['t_block1'][$_t_block1_i]; ?>
 				<li<?php if ($_t_block1_val['S_SELECTED']) {  ?> id="activetab"<?php } ?>><a href="<?php echo $_t_block1_val['U_TITLE']; ?>"><span><?php echo $_t_block1_val['L_TITLE']; ?></span></a></li>
-			<?php }} ?>
-
+			<?php }} ?>
 			</ul>
 		</div>
 
@@ -199,22 +190,17 @@ function switch_menu()
 					<?php if (! $this->_rootref['S_USER_NOTICE']) {  ?> 
 					<div id="toggle">
 						<a id="toggle-handle" accesskey="m" title="<?php echo ((isset($this->_rootref['L_MENU_TOGGLE'])) ? $this->_rootref['L_MENU_TOGGLE'] : ((isset($user->lang['MENU_TOGGLE'])) ? $user->lang['MENU_TOGGLE'] : '{ MENU_TOGGLE }')); ?>" onclick="switch_menu(); return false;" href="#"></a></div>
-					<?php } ?>
-
+					<?php } ?>
 					<div id="menu">
 						<p><?php echo ((isset($this->_rootref['L_LOGGED_IN_AS'])) ? $this->_rootref['L_LOGGED_IN_AS'] : ((isset($user->lang['LOGGED_IN_AS'])) ? $user->lang['LOGGED_IN_AS'] : '{ LOGGED_IN_AS }')); ?><br /><strong><?php echo (isset($this->_rootref['USERNAME'])) ? $this->_rootref['USERNAME'] : ''; ?></strong> [&nbsp;<a href="<?php echo (isset($this->_rootref['U_LOGOUT'])) ? $this->_rootref['U_LOGOUT'] : ''; ?>"><?php echo ((isset($this->_rootref['L_LOGOUT'])) ? $this->_rootref['L_LOGOUT'] : ((isset($user->lang['LOGOUT'])) ? $user->lang['LOGOUT'] : '{ LOGOUT }')); ?></a>&nbsp;][&nbsp;<a href="<?php echo (isset($this->_rootref['U_ADM_LOGOUT'])) ? $this->_rootref['U_ADM_LOGOUT'] : ''; ?>"><?php echo ((isset($this->_rootref['L_ADM_LOGOUT'])) ? $this->_rootref['L_ADM_LOGOUT'] : ((isset($user->lang['ADM_LOGOUT'])) ? $user->lang['ADM_LOGOUT'] : '{ ADM_LOGOUT }')); ?></a>&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 						<ul>
-						<?php $this->_tpldata['DEFINE']['.']['LI_USED'] = 0; $_l_block1_count = (isset($this->_tpldata['l_block1'])) ? sizeof($this->_tpldata['l_block1']) : 0;if ($_l_block1_count) {for ($_l_block1_i = 0; $_l_block1_i < $_l_block1_count; ++$_l_block1_i){$_l_block1_val = &$this->_tpldata['l_block1'][$_l_block1_i]; if ($_l_block1_val['S_SELECTED']) {  $_l_block2_count = (isset($_l_block1_val['l_block2'])) ? sizeof($_l_block1_val['l_block2']) : 0;if ($_l_block2_count) {for ($_l_block2_i = 0; $_l_block2_i < $_l_block2_count; ++$_l_block2_i){$_l_block2_val = &$_l_block1_val['l_block2'][$_l_block2_i]; if (sizeof($_l_block2_val['l_block3'])) {  ?>
-
+						<?php $this->_tpldata['DEFINE']['.']['LI_USED'] = 0; $_l_block1_count = (isset($this->_tpldata['l_block1'])) ? sizeof($this->_tpldata['l_block1']) : 0;if ($_l_block1_count) {for ($_l_block1_i = 0; $_l_block1_i < $_l_block1_count; ++$_l_block1_i){$_l_block1_val = &$this->_tpldata['l_block1'][$_l_block1_i]; if ($_l_block1_val['S_SELECTED']) {  $_l_block2_count = (isset($_l_block1_val['l_block2'])) ? sizeof($_l_block1_val['l_block2']) : 0;if ($_l_block2_count) {for ($_l_block2_i = 0; $_l_block2_i < $_l_block2_count; ++$_l_block2_i){$_l_block2_val = &$_l_block1_val['l_block2'][$_l_block2_i]; if (sizeof($_l_block2_val['l_block3'])) {  ?>
 							<li class="header"><?php echo $_l_block2_val['L_TITLE']; ?></li>
-							<?php $this->_tpldata['DEFINE']['.']['LI_USED'] = 1; } $_l_block3_count = (isset($_l_block2_val['l_block3'])) ? sizeof($_l_block2_val['l_block3']) : 0;if ($_l_block3_count) {for ($_l_block3_i = 0; $_l_block3_i < $_l_block3_count; ++$_l_block3_i){$_l_block3_val = &$_l_block2_val['l_block3'][$_l_block3_i]; ?>
-
+							<?php $this->_tpldata['DEFINE']['.']['LI_USED'] = 1; } $_l_block3_count = (isset($_l_block2_val['l_block3'])) ? sizeof($_l_block2_val['l_block3']) : 0;if ($_l_block3_count) {for ($_l_block3_i = 0; $_l_block3_i < $_l_block3_count; ++$_l_block3_i){$_l_block3_val = &$_l_block2_val['l_block3'][$_l_block3_i]; ?>
 								<li<?php if ($_l_block3_val['S_SELECTED']) {  ?> id="activemenu"<?php } ?>><a href="<?php echo $_l_block3_val['U_TITLE']; ?>"><span><?php echo $_l_block3_val['L_TITLE']; ?></span></a></li>
-								<?php $this->_tpldata['DEFINE']['.']['LI_USED'] = 1; }} }} } }} if (! $this->_tpldata['DEFINE']['.']['LI_USED']) {  ?>
-
+								<?php $this->_tpldata['DEFINE']['.']['LI_USED'] = 1; }} }} } }} if (! $this->_tpldata['DEFINE']['.']['LI_USED']) {  ?>
 							<li></li>
-						<?php } ?>
-
+						<?php } ?>
 						</ul>
 					</div>
 	
